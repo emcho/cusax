@@ -138,7 +138,8 @@
         Most often the combined use of SIP and XMPP ("CUSAX") would 
         employ SIP exclusively for audio, video, and telephony services 
         and rely on XMPP for anything else varying from chat, contact 
-        list management, and presence to whiteboarding and exchanging files.
+        list management, and presence to whiteboarding and exchanging 
+        files.
       </t>
       <t>
         This document explains how such hybrid offerings can be achieved 
