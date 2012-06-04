@@ -283,7 +283,8 @@
       <t>
         An alternate mechanism would be for CUSAX clients to add to 
         their SIP invite requests a Contact header containing the  
-        XMPP URI corresponding to their JID as per <xref target="RFC4622"/>.
+        XMPP URI corresponding to their JID as per 
+        <xref target="RFC4622"/>.
       </t>
     </section>
     <section title='Security Considerations'>
