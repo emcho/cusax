@@ -148,7 +148,7 @@
         with a minimum of modifications to existing software while 
         providing an optimal user experience. It tries to cover points 
         such as server discovery, determining a SIP AOR while using 
-        XMPP and determining an XMPP Jabber ID ("JID") from incoming SIP requests. 
+        XMPP and determining an XMPP Jabber Identifier ("JID") from incoming SIP requests. 
         Most of the text here pertains to client behavior but it also 
         recommends certain server-side configurations.
       </t>
