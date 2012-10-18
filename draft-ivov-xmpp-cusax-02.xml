@@ -89,7 +89,9 @@
         and deployed with different purposes: from its very start SIP's 
         primary goal has been to provide a means of conducting "Internet 
         telephone calls". XMPP on the other hand, has, from its Jabber
-        days, been mostly used for instant messaging and presence.
+        days, been mostly used for instant messaging and presence
+        <xref target="RFC6121"/>, as well as related services such as
+        groupchat rooms <xref target="XEP-0045"/>.
       </t>
       <t>
         For various reasons, these trends have continued through the 
@@ -121,9 +123,9 @@
         for telephony-like services, especially in enterprises where 
         users are accustomed to features such as voice mail, call park,
         call queues, conference bridges and many others that are rarely
-        (if at all) available in Jingle servers. XMPP implementations on 
+        (if at all) available in Jingle-based software. XMPP implementations, on 
         the other hand, greatly outnumber and outperform those available
-        for instant messaging and presence extensions developed by in 
+        for instant messaging and presence extensions developed in 
         the SIMPLE WG, such as <xref target="RFC4975">MSRP</xref> and 
         <xref target="RFC4825">XCAP</xref>.  
       </t>
@@ -146,7 +148,7 @@
         with a minimum of modifications to existing software while 
         providing an optimal user experience. It tries to cover points 
         such as server discovery, determining a SIP AOR while using 
-        XMPP and determining an XMPP JabberID from incoming SIP requests. 
+        XMPP and determining an XMPP Jabber ID ("JID") from incoming SIP requests. 
         Most of the text here pertains to client behavior but it also 
         recommends certain server-side configurations.
       </t>
@@ -155,7 +157,7 @@
         XMPP functionality in end-user-oriented clients. By intent it
         does not define methods for protocol-level mapping between SIP
         and XMPP, as might be used within a server-side gateway between 
-        a SIP network to an XMPP network. A separate series of documents
+        a SIP network and an XMPP network. A separate series of documents
         has been produced that defines such mappings.
       </t>
     </section>
@@ -164,10 +166,10 @@
         One of the main problems of using two distinct protocols when
         providing one service is the effect on usability. E-mail 
         services, for example, have long been affected by the mixed use 
-        of SMTP on for outgoing mail and POP3 or IMAP for incoming mail, 
+        of SMTP for outgoing mail and POP3 or IMAP for incoming mail, 
         making it rather complicated for inexperienced users to 
         configure a mail client and start using it with a new service. 
-        As a result, mailing list services often need to provide 
+        As a result, Internet service providers often need to provide 
         configuration instructions for various mail clients. Client 
         developers and communication device manufacturers on the other
         hand often ship with a number of wizards that enable users to 
@@ -180,8 +182,8 @@
         configure their separate SIP and XMPP accounts, dual-stack
         SIP/XMPP clients ought to provide means of online provisioning.
         While the specifics of such mechanisms are outside the scope of
-        this specification, they should make it possible for service
-        providers to remotely configure the clients based on minimal
+        this specification, they should make it possible for a service
+        provider to remotely configure the clients based on minimal
         user input (e.g., only a user ID and password).
       </t>
       <t>
@@ -208,8 +210,8 @@
         Similarly they could also depict the SIP CUSAX connection as a
         "Voice and Video" or a "Telephony" connection. The exact naming
         is of course entirely up to implementers. The point is that, in
-        cases where SIP and XMPP are components of a service provided by
-        a single entity, such presentation could help users better 
+        cases where SIP and XMPP are components of a service offered by
+        a single provider, such presentation could help users better 
         understand why they are being shown two different connections 
         for what they perceive as a single service. It could alleviate 
         especially situations where one of these connections is 
@@ -222,21 +224,24 @@
         to the corresponding SIP and XMPP services it would proceed by 
         retrieving its XMPP roster. In order for CUSAX to function 
         properly, XMPP service administrators should make sure that at 
-        least one of the <xref target="RFC4825">VCARD</xref> "tel" 
+        least one of the <xref target="RFC6350">vCard</xref> "tel" 
         fields for each contact is properly populated with a SIP URI or 
-        a phone number. There are  no limitations as to the form of that
-        number (e.g. it does not need to respect any equivalence with 
-        the XMPP JID). However, it ought to be reachable through the SIP
-        counterpart of this CUSAX service.
+        a phone number when an XMPP protocol for vCard storage (e.g., 
+        <xref target='XEP-0054'/> or <xref target='XEP-0292'/>) is used. 
+        There are no limitations as to the form of that number (e.g. it 
+        does not need to respect any equivalence with the XMPP JID). 
+        However, it ought to be reachable through the SIP aspect of this 
+        CUSAX service.
       </t>
       <t>
         To ensure that the foregoing approach is always respected, 
         service providers might consider (1) preventing clients (and 
-        hence users) from modifying the VCARD "tel" fields or (2) 
+        hence users) from modifying the vCard "tel" fields or (2) 
         applying some form of validation before recording changes. Of 
         course such validation would be feasible mostly in cases where 
         one single provider controls both the XMPP and the SIP service
-        since such providers would "know" what SIP AOR corresponds to 
+        since such providers would "know" (e.g., based on use of a common
+        user database for both services) what SIP AOR corresponds to 
         a given XMPP user.
       </t>
       <t>  
@@ -245,25 +250,25 @@
         entry that has a properly set "tel" field even if calling has
         been disabled for that particular XMPP account. The usefulness 
         of such a feature is not limited to CUSAX. After all, numbers
-        are entered in VCARDs in order to be dialed and called. Hence, 
+        are entered in vCards in order to be dialed and called. Hence, 
         as long as an XMPP client is equipped with accounts that have 
         calling features it may wish to present the user with the
         option of using these accounts to reach numbers from an XMPP 
-        VCARD. In order to improve usability, in cases where clients are 
+        vCard. In order to improve usability, in cases where clients are 
         provisioned with only a single telephony-capable account they 
         ought to do so immediately upon user request without asking for 
         confirmation. This way CUSAX users whose only account with 
         calling capabilities would often be the SIP part of their 
-        service, would be having better user experience. If on the other 
+        service, would have a better user experience. If on the other 
         hand, the CUSAX client is aware of multiple telephony-capable 
         accounts, it ought to present the user with the choice of 
         reaching the phone number through any of them (including the 
-        source XMPP account where the VCARD was obtained) in order to 
+        source XMPP account where the vCard was obtained) in order to 
         guarantee proper operation for XMPP accounts that are not part 
         of a CUSAX deployment.
       </t>
       <t> 
-        In addition to discovering phone numbers from VCARDs, clients
+        In addition to discovering phone numbers from vCards, clients
         may also check presence broadcasts and the appropriate Personal
         Eventing Protocol nodes as described in <xref target="XEP-0152">
         XEP-0152: Reachability Addresses</xref>. 
@@ -279,14 +284,14 @@
         identity of the caller and bind it to a roster entry so that 
         users could revert to chatting or other forms of communication
         that require XMPP. To do so clients could search their roster
-        for an entry whose VCARD has a "tel" field matching the 
+        for an entry whose vCard has a "tel" field matching the 
         originator of the call.
       </t>
       <t>
         An alternate mechanism would be for CUSAX clients to add to 
         their SIP invite requests a Contact header containing the  
         XMPP URI corresponding to their JID as per 
-        <xref target="RFC4622"/>.
+        <xref target="RFC5122"/>.
       </t>
     </section>
     <section title='Federation'>
@@ -296,7 +301,25 @@
     </section>
     <section title='Security Considerations'>
       <t>
-        TBD
+        Use of the same user agent with two different accounts providing
+        complementary features introduces the possibility of mismatches
+        between the security profiles of those accounts or features.
+        For example, the SIP aspect and XMPP aspect of the CUSAX service
+        might offer different authentication options (e.g., digest 
+        authentication for SIP as specified in <xref target='RFC32161'/>
+        and SCRAM authentication <xref target='RFC5802'/> for XMPP as
+        specified in <xref target='RFC6120'/>). Similarly, a CUSAX client
+        might successfully negotiate Transport Layer Security (TLS) 
+        <xref target='RFC5246'/> when connecting to the XMPP aspect of
+        the service but not when connecting to the SIP aspect. Such
+        mismatches could introduce the possibility of downgrade attacks.
+        User agent developers and service providers ought to ensure
+        that such mismatches are avoided as much as possible.
+      </t>
+      <t>
+        Refer to the specifications for the relevant SIP and XMPP 
+        features for detailed security considerations applying to 
+        each "stack" in a CUSAX client.
       </t>
     </section>
     <section title='Acknowledgements'>
@@ -314,18 +337,35 @@
       <?rfc include="reference.RFC.3711"?>
       <?rfc include="reference.RFC.4474"?>
       <?rfc include="reference.RFC.4566"?>
-      <?rfc include="reference.RFC.4622"?>
+      <?rfc include="reference.RFC.5122"?>
       <?rfc include="reference.RFC.4787"?>
       <?rfc include="reference.RFC.4825"?>
       <?rfc include="reference.RFC.4975"?>
       <?rfc include="reference.RFC.5245"?>
+      <?rfc include="reference.RFC.5246"?>
       <?rfc include="reference.RFC.5389"?>
       <?rfc include="reference.RFC.5751"?>
       <?rfc include="reference.RFC.5766"?>
+      <?rfc include="reference.RFC.5802"?>
       <?rfc include="reference.RFC.5853"?>
       <?rfc include="reference.RFC.6120"?>
+      <?rfc include="reference.RFC.6121"?>
       <?rfc include="reference.RFC.6189"?>
       <?rfc include="reference.RFC.6350"?>
+      <reference anchor="XEP-0054">
+        <front>
+          <title>vcard-temp</title>
+          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+            <organization/>
+            <address>
+              <email>stpeter@jabber.org</email>
+            </address>
+          </author>
+          <date day="16" month="July" year="2008"/>
+        </front>
+        <seriesInfo name="XSF XEP" value="0054"/>
+        <format type="HTML" target="http://xmpp.org/extensions/xep-0054.html"/>
+      </reference>
       <reference anchor="XEP-0152">
         <front>
         <title>XEP-0152: Reachability Addresses</title>
@@ -344,6 +384,26 @@
         <date month="October" year="2008" />
         </front>
         <seriesInfo name="XEP" value="XEP-0152" />
+      </reference>
+      <reference anchor="XEP-0292">
+        <front>
+          <title>vCard4 Over XMPP</title>
+          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+            <organization/>
+            <address>
+              <email>stpeter@jabber.org</email>
+            </address>
+          </author>
+          <author initials="S." surname="Mizzi" fullname="Samantha Mizzi">
+            <organization/>
+            <address>
+              <email>samizzi@cisco.com</email>
+            </address>
+          </author>
+          <date day="09" month="October" year="2011"/>
+        </front>
+        <seriesInfo name="XSF XEP" value="0292"/>
+        <format type="HTML" target="http://xmpp.org/extensions/xep-0292.html"/>
       </reference>
     </references>
   </back>
