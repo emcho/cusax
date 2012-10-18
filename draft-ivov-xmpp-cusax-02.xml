@@ -352,6 +352,20 @@
       <?rfc include="reference.RFC.6121"?>
       <?rfc include="reference.RFC.6189"?>
       <?rfc include="reference.RFC.6350"?>
+      <reference anchor="XEP-0045">
+        <front>
+          <title>Multi-User Chat</title>
+          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+            <organization/>
+            <address>
+              <email>stpeter@jabber.org</email>
+            </address>
+          </author>
+          <date day="08" month="February" year="2012"/>
+        </front>
+        <seriesInfo name="XSF XEP" value="0045"/>
+        <format type="HTML" target="http://xmpp.org/extensions/xep-0045.html"/>
+      </reference>
       <reference anchor="XEP-0054">
         <front>
           <title>vcard-temp</title>
