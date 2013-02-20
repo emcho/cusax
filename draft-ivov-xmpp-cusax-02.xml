@@ -4,7 +4,7 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 
 <rfc category='info' ipr='trust200902'
-     docName='draft-ivov-xmpp-cusax-01'>
+     docName='draft-ivov-xmpp-cusax-02'>
 
 <?rfc toc='yes' ?>
 <?rfc symrefs='yes' ?>
@@ -306,7 +306,7 @@
         between the security profiles of those accounts or features.
         For example, the SIP aspect and XMPP aspect of the CUSAX service
         might offer different authentication options (e.g., digest 
-        authentication for SIP as specified in <xref target='RFC32161'/>
+        authentication for SIP as specified in <xref target='RFC3261'/>
         and SCRAM authentication <xref target='RFC5802'/> for XMPP as
         specified in <xref target='RFC6120'/>). Similarly, a CUSAX client
         might successfully negotiate Transport Layer Security (TLS) 
