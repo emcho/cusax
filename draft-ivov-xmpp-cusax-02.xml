@@ -16,8 +16,8 @@
   <front>
 
     <title abbrev='Combined Use of SIP and XMPP'>
-      Combined Use of the Session Initiation Protocol (SIP) and the 
-      Extensible Messaging and Presence Protocol (CUSAX) 
+      CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the 
+      Extensible Messaging and Presence Protocol (XMPP) 
     </title>
     <author initials='E.' surname='Ivov' fullname='Emil Ivov'>
       <organization abbrev='Jitsi'>Jitsi</organization>
@@ -75,8 +75,8 @@
         existing client and server-side software. Also, it is not the 
         purpose of this document to make recommendations as to whether 
         or not such combined use should be preferred to the mechanisms 
-        provided natively by each protocol like for example SIP's SIMPLE
-        or XMPP's Jingle. It merely aims to provide guidance to those 
+        provided natively by each protocol (for example, SIP's SIMPLE
+        or XMPP's Jingle).  It merely aims to provide guidance to those 
         who are interested in such a combined use.
       </t>
     </abstract>
@@ -113,8 +113,8 @@
         have worked on defining a number of XMPP Extension Protocols
         (XEPs) that provide XMPP implementations with the means of 
         establishing end-to-end sessions. These extensions are often 
-        jointly referred to as Jingle and their arguably most popular
-        use case are audio and video calls.  
+        jointly referred to as Jingle and arguably their most popular
+        use case is audio and video calling.  
           </t>
         </list>
       </t>
@@ -164,7 +164,7 @@
     <section title='Client Bootstrap'>
       <t>
         One of the main problems of using two distinct protocols when
-        providing one service is the effect on usability. E-mail 
+        providing one service is the impact on usability. E-mail 
         services, for example, have long been affected by the mixed use 
         of SMTP for outgoing mail and POP3 or IMAP for incoming mail, 
         making it rather complicated for inexperienced users to 
@@ -215,7 +215,7 @@
         understand why they are being shown two different connections 
         for what they perceive as a single service. It could alleviate 
         especially situations where one of these connections is 
-        disrupted while the other one is successfully maintained.
+        disrupted while the other one is still active.
       </t>
     </section>
     <section title='Operation'>
@@ -237,9 +237,9 @@
         To ensure that the foregoing approach is always respected, 
         service providers might consider (1) preventing clients (and 
         hence users) from modifying the vCard "tel" fields or (2) 
-        applying some form of validation before recording changes. Of 
+        applying some form of validation before storing changes. Of 
         course such validation would be feasible mostly in cases where 
-        one single provider controls both the XMPP and the SIP service
+        a single provider controls both the XMPP and the SIP service
         since such providers would "know" (e.g., based on use of a common
         user database for both services) what SIP AOR corresponds to 
         a given XMPP user.
@@ -294,11 +294,6 @@
         <xref target="RFC5122"/>.
       </t>
     </section>
-    <section title='Federation'>
-      <t>
-        An alternate mechanism would be for CUSAX clients to add to
-      </t>
-    </section>
     <section title='Security Considerations'>
       <t>
         Use of the same user agent with two different accounts providing
@@ -321,6 +316,9 @@
         features for detailed security considerations applying to 
         each "stack" in a CUSAX client.
       </t>
+    </section>
+    <section title='IANA Considerations'>
+      <t>This document has no actions for the IANA.</t>
     </section>
     <section title='Acknowledgements'>
       <t>
@@ -395,7 +393,7 @@
                 Cisco
                 </organization>
         </author>
-        <date month="October" year="2008" />
+        <date month="February" year="2013" />
         </front>
         <seriesInfo name="XEP" value="XEP-0152" />
       </reference>
