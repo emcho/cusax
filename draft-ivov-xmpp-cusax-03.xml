@@ -438,6 +438,7 @@
       <?rfc include="reference.RFC.5766"?>
       <?rfc include="reference.RFC.5802"?>
       <?rfc include="reference.RFC.5853"?>
+      <?rfc include="reference.RFC.5876"?>
       <?rfc include="reference.RFC.6120"?>
       <?rfc include="reference.RFC.6121"?>
       <?rfc include="reference.RFC.6189"?>
