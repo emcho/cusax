@@ -4,7 +4,7 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 
 <rfc category='info' ipr='trust200902'
-     docName='draft-ivov-xmpp-cusax-02'>
+     docName='draft-ivov-xmpp-cusax-03'>
 
 <?rfc toc='yes' ?>
 <?rfc symrefs='yes' ?>
@@ -240,12 +240,19 @@
         least one of the <xref target="RFC6350">vCard</xref> "tel" 
         fields for each contact is properly populated with a SIP URI or 
         a phone number when an XMPP protocol for vCard storage (e.g., 
-        <xref target='XEP-0054'/> or <xref target='XEP-0292'/>) is used. 
+        <xref target='XEP-0054'/> or <xref target='XEP-0292'/>) is used.
         There are no limitations as to the form of that number. For
         example while maintaining a certain consistency between SIP AORs
         and XMPP JIDs, it is by no means required. It is quite important
         however that the phone number or SIP AOR stored in the vCard be
         reachable through the SIP aspect of this CUSAX service.
+      </t>
+      <t>
+        Additionally, clients that have separete triggers (buttons) for
+        audio and video calls may choose to use the presence or absence
+        of the "video" tel type defined in <xref target="RFC6350"/> and
+        enable or disable the possibility for starting video calls
+        accordingly.
       </t>
       <t>
         To ensure that the foregoing approach is always respected, 
@@ -416,6 +423,9 @@
       <t>
         The authors would also like to thank the following persons for
         their reviews and suggestions for improving this specification:
+        Adrian Georgescu, Daniel Pocock, Gonzalo
+        Salgueiro, Kevin Gallagher, Olivier Crete, Saúl Ibarra Corretgé,
+        Sébastien Couture and Travis Reitter.
       </t>
     </section>
   </middle>
@@ -446,7 +456,8 @@
       <reference anchor="XEP-0045">
         <front>
           <title>Multi-User Chat</title>
-          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+          <author initials="P." surname="Saint-Andre"
+                  fullname="Peter Saint-Andre">
             <organization/>
             <address>
               <email>stpeter@jabber.org</email>
@@ -455,12 +466,14 @@
           <date day="08" month="February" year="2012"/>
         </front>
         <seriesInfo name="XSF XEP" value="0045"/>
-        <format type="HTML" target="http://xmpp.org/extensions/xep-0045.html"/>
+        <format type="HTML"
+                target="http://xmpp.org/extensions/xep-0045.html"/>
       </reference>
       <reference anchor="XEP-0054">
         <front>
           <title>vcard-temp</title>
-          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+          <author initials="P." surname="Saint-Andre"
+                  fullname="Peter Saint-Andre">
             <organization/>
             <address>
               <email>stpeter@jabber.org</email>
@@ -469,7 +482,8 @@
           <date day="16" month="July" year="2008"/>
         </front>
         <seriesInfo name="XSF XEP" value="0054"/>
-        <format type="HTML" target="http://xmpp.org/extensions/xep-0054.html"/>
+        <format type="HTML"
+                target="http://xmpp.org/extensions/xep-0054.html"/>
       </reference>
       <reference anchor="XEP-0152">
         <front>
@@ -493,13 +507,15 @@
       <reference anchor="XEP-0292">
         <front>
           <title>vCard4 Over XMPP</title>
-          <author initials="P." surname="Saint-Andre" fullname="Peter Saint-Andre">
+          <author initials="P." surname="Saint-Andre"
+                  fullname="Peter Saint-Andre">
             <organization/>
             <address>
               <email>stpeter@jabber.org</email>
             </address>
           </author>
-          <author initials="S." surname="Mizzi" fullname="Samantha Mizzi">
+          <author initials="S." surname="Mizzi"
+                  fullname="Samantha Mizzi">
             <organization/>
             <address>
               <email>samizzi@cisco.com</email>
@@ -508,7 +524,8 @@
           <date day="09" month="October" year="2011"/>
         </front>
         <seriesInfo name="XSF XEP" value="0292"/>
-        <format type="HTML" target="http://xmpp.org/extensions/xep-0292.html"/>
+        <format type="HTML"
+                target="http://xmpp.org/extensions/xep-0292.html"/>
       </reference>
     </references>
   </back>

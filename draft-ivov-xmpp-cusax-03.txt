@@ -12,7 +12,7 @@ Expires: August 30, 2013                                  Telecom Italia
 
   CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the
            Extensible Messaging and Presence Protocol (XMPP)
-                        draft-ivov-xmpp-cusax-02
+                        draft-ivov-xmpp-cusax-03
 
 Abstract
 
@@ -268,11 +268,11 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
    phone number or SIP AOR stored in the vCard be reachable through the
    SIP aspect of this CUSAX service.
 
-   To ensure that the foregoing approach is always respected, service
-   providers might consider (1) preventing clients (and hence users)
-   from modifying the vCard "tel" fields or (2) applying some form of
-   validation before storing changes.  Of course such validation would
-   be feasible mostly in cases where a single provider controls both the
+   Additionally, clients that have separete triggers (buttons) for audio
+   and video calls may choose to use the presence or absence of the
+   "video" tel type defined in [RFC6350] and enable or disable the
+   possibility for starting video calls accordingly.
+
 
 
 
@@ -281,6 +281,11 @@ Ivov, et al.             Expires August 30, 2013                [Page 5]
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
 
 
+   To ensure that the foregoing approach is always respected, service
+   providers might consider (1) preventing clients (and hence users)
+   from modifying the vCard "tel" fields or (2) applying some form of
+   validation before storing changes.  Of course such validation would
+   be feasible mostly in cases where a single provider controls both the
    XMPP and the SIP service since such providers would "know" (e.g.,
    based on use of a common user database for both services) what SIP
    AOR corresponds to a given XMPP user.
@@ -324,17 +329,19 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
    In addition, in order to avoid the effort of iterating over an entire
    roster and retrieving all vCards, when running in trusted SIP domains
    [RFC5876] CUSAX clients may use XMPP JIDs that appear in P-Asserted-
-   Identity headers [RFC5122].  Using P-Preferred-Identity headers in
-   non-trusted domains is also a possibility, however only as a cue: the
-   actual AOR-to-JID binding would still need to be confirmed by a vCard
-   entry.  If this confirmation succeeds the client would not need to
-   search the entire roster and retrieve all vCards.
 
 
 
 Ivov, et al.             Expires August 30, 2013                [Page 6]
 
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
+
+
+   Identity headers [RFC5122].  Using P-Preferred-Identity headers in
+   non-trusted domains is also a possibility, however only as a cue: the
+   actual AOR-to-JID binding would still need to be confirmed by a vCard
+   entry.  If this confirmation succeeds the client would not need to
+   search the entire roster and retrieve all vCards.
 
 
 4.  Context
@@ -378,13 +385,6 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
    address is from a different domain, Alice would have no obvious and
    straightforward cues telling her that this is in fact a call to the
    PSTN.  In addition to the potentially lower audio quality, Alice may
-   also end up unexpected charges for such calls.
-
-   In order to avoid such issues, providers maintaining a CUSAX service
-   for the users in their domain may choose to provide additional cues
-   (e.g. an audio tone or message) indicating that a call would incur
-   charges.
-
 
 
 
@@ -392,6 +392,13 @@ Ivov, et al.             Expires August 30, 2013                [Page 7]
 
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
 
+
+   also end up unexpected charges for such calls.
+
+   In order to avoid such issues, providers maintaining a CUSAX service
+   for the users in their domain may choose to provide additional cues
+   (e.g. an audio tone or message) indicating that a call would incur
+   charges.
 
    A slightly less disturbing scenario, where a SIP service would only
    allow communication with intra-domain numbers would simply prevent
@@ -435,18 +442,17 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
    Simo Veikkolainen.  Markus also provided various suggestions for
    improving the documentation.
 
-   The authors would also like to thank the following persons for their
-   reviews and suggestions for improving this specification:
-
-
-
-
-
 
 
 Ivov, et al.             Expires August 30, 2013                [Page 8]
 
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
+
+
+   The authors would also like to thank the following persons for their
+   reviews and suggestions for improving this specification: Adrian
+   Georgescu, Daniel Pocock, Gonzalo Salgueiro, Kevin Gallagher, Olivier
+   Crete, Saul Ibarra Corretge, Sebastien Couture and Travis Reitter.
 
 
 9.  Informative References
@@ -491,12 +497,6 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
               Extensible Messaging and Presence Protocol (XMPP)",
               RFC 5122, February 2008.
 
-   [RFC5245]  Rosenberg, J., "Interactive Connectivity Establishment
-              (ICE): A Protocol for Network Address Translator (NAT)
-              Traversal for Offer/Answer Protocols", RFC 5245,
-              April 2010.
-
-   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
 
 
 
@@ -505,6 +505,12 @@ Ivov, et al.             Expires August 30, 2013                [Page 9]
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
 
 
+   [RFC5245]  Rosenberg, J., "Interactive Connectivity Establishment
+              (ICE): A Protocol for Network Address Translator (NAT)
+              Traversal for Offer/Answer Protocols", RFC 5245,
+              April 2010.
+
+   [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
    [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
@@ -547,12 +553,6 @@ Internet-Draft        Combined Use of SIP and XMPP         February 2013
 
    [XEP-0045]
               Saint-Andre, P., "Multi-User Chat", XSF XEP 0045,
-              February 2012.
-
-   [XEP-0054]
-              Saint-Andre, P., "vcard-temp", XSF XEP 0054, July 2008.
-
-   [XEP-0152]
 
 
 
@@ -561,6 +561,12 @@ Ivov, et al.             Expires August 30, 2013               [Page 10]
 Internet-Draft        Combined Use of SIP and XMPP         February 2013
 
 
+              February 2012.
+
+   [XEP-0054]
+              Saint-Andre, P., "vcard-temp", XSF XEP 0054, July 2008.
+
+   [XEP-0152]
               Hildebrand, J. and P. Saint-Andre, "XEP-0152: Reachability
               Addresses", XEP XEP-0152, October 2008.
 
@@ -597,12 +603,6 @@ Authors' Addresses
 
    Phone: +1-303-308-3282
    Email: psaintan@cisco.com
-
-
-
-
-
-
 
 
 
