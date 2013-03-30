@@ -62,7 +62,7 @@
     <date />
     <abstract>
       <t>
-        This document describes recommended practices for combined use
+        This document describes suggested practices for combined use
         of the Session Initiation Protocol (SIP) and the Extensible
         Messaging and Presence Protocol (XMPP). Such practices aim to
         provide a single fully featured real-time communication service
@@ -173,25 +173,31 @@ signaling  \         /   presence, etc.
         does not define methods for protocol-level mapping between SIP
         and XMPP, as might be used within a server-side gateway between 
         a SIP network and an XMPP network. A separate series of
-        documents has been produced that defines such mappings.
+        documents has been produced that defines such mappings. More 
+        generally, this document does not address the topic of 
+        inter-domain communication (often called "federation") between
+        service providers (e.g., how a service provider that offers a
+        combined SIP-XMPP service might communicate with a SIP-only or
+        XMPP-only service), nor does it describe the reasons why a
+        service provider might choose SIP or XMPP for various features.
       </t>
       <t>
         Finally, this document concentrates on use cases where the SIP
-        and the XMPP services are controlled by one an the same
-        provider. This document being of an informational nature, it
+        services and XMPP services are controlled by one and the same
+        provider. Since this document is of an informational nature, it
         is not unreasonable for clients to apply some of the guidelines
         here even in cases where there is no established relationship
-        between the SIP and the XMPP services. For example, it is
-        reasonable for a client to provide a means to its users to
-        easily start a call to a phone number recorded in a vCard. The
-        exact set of rules to follow in such cases is left to
-        application developers.
+        between the SIP and the XMPP services (for example, it is
+        reasonable for a client to provide a way for its users to
+        easily start a call to a phone number recorded in a vCard). 
+        However, the exact set of rules to follow in such cases is 
+        left to application developers.
       </t>
     </section>
     <section title='Client Bootstrap'>
       <t>
         One of the main problems of using two distinct protocols when
-        providing one service is the impact on usability. E-mail
+        providing one service is the impact on usability. Email
         services, for example, have long been affected by the mixed use 
         of SMTP for outgoing mail and POP3 or IMAP for incoming mail, 
         making it rather complicated for inexperienced users to 
@@ -200,7 +206,7 @@ signaling  \         /   presence, etc.
         configuration instructions for various mail clients. Client 
         developers and communication device manufacturers on the other
         hand often ship with a number of wizards that enable users to 
-        easily set up a new account for a number of popular e-mail 
+        easily set up a new account for a number of popular email 
         services. While this may improve the situation to some extent, 
         the user experience is still clearly sub-optimal.
       </t>
@@ -218,21 +224,21 @@ signaling  \         /   presence, etc.
         in one protocol would also be available in the other, clients 
         should make it possible for such features to be disabled for a 
         specific account. In particular, it is suggested that clients
-        allow for audio/video calling features to be disabled for XMPP
-        accounts. Additionally, instant messaging and presence features 
+        allow for audio and video calling features to be disabled for XMPP
+        accounts, and that instant messaging and presence features 
         should also be made optional for SIP accounts.
       </t>
       <t>
-        The main advantage of the above would be that clients would be
+        The main advantage of this approach is that clients would be
         able to continue to function properly and use the complete 
-        feature set of stand-alone SIP and XMPP accounts. 
+        feature set of standalone SIP and XMPP accounts. 
       </t>
       <t>
         Once client bootstrap has completed, clients need to log in
         independently to the SIP and XMPP accounts that make up the 
         CUSAX "service" and then maintain both these connections. In 
         order to improve user experience, when reporting connection 
-        status clients may also wish to present the CUSAX XMPP 
+        status clients may also wish to present the XMPP CUSAX
         connection as an "instant messaging" or a "chat" account. 
         Similarly they could also depict the SIP CUSAX connection as a
         "Voice and Video" or a "Telephony" connection. The exact naming
@@ -253,13 +259,14 @@ signaling  \         /   presence, etc.
         properly, XMPP service administrators should make sure that at 
         least one of the <xref target="RFC6350">vCard</xref> "tel" 
         fields for each contact is properly populated with a SIP URI or 
-        a phone number when an XMPP protocol for vCard storage (e.g., 
-        <xref target='XEP-0054'/> or <xref target='XEP-0292'/>) is used.
+        a phone number when an XMPP protocol for vCard storage is used
+        (e.g., <xref target='XEP-0054'/> or <xref target='XEP-0292'/>).
         There are no limitations as to the form of that number. For
-        example while maintaining a certain consistency between SIP AORs
-        and XMPP JIDs, it is by no means required. It is quite important
-        however that the phone number or SIP AOR stored in the vCard be
-        reachable through the SIP aspect of this CUSAX service.
+        example while it is desirable to maintain a certain consistency 
+        between SIP AORs and XMPP JIDs, that is by no means required. It 
+        is quite important however that the phone number or SIP AOR 
+        stored in the vCard be reachable through the SIP aspect of this 
+        CUSAX service.
       </t>
       <t>
         Additionally, clients that have separete triggers (buttons) for
@@ -278,29 +285,6 @@ signaling  \         /   presence, etc.
         since such providers would "know" (e.g., based on use of a common
         user database for both services) what SIP AOR corresponds to 
         a given XMPP user.
-      </t>
-      <t>  
-        When rendering the XMPP roster CUSAX clients should make sure
-        that users are presented with a "Call" option for each roster 
-        entry that has a properly set "tel" field even if calling has
-        been disabled for that particular XMPP account. The usefulness 
-        of such a feature is not limited to CUSAX. After all, numbers
-        are entered in vCards in order to be dialed and called. Hence, 
-        as long as an XMPP client is equipped with accounts that have 
-        calling features it may wish to present the user with the
-        option of using these accounts to reach numbers from an XMPP 
-        vCard. In order to improve usability, in cases where clients are 
-        provisioned with only a single telephony-capable account they 
-        ought to do so immediately upon user request without asking for 
-        confirmation. This way CUSAX users whose only account with 
-        calling capabilities would often be the SIP part of their 
-        service, would have a better user experience. If on the other 
-        hand, the CUSAX client is aware of multiple telephony-capable 
-        accounts, it ought to present the user with the choice of 
-        reaching the phone number through any of them (including the 
-        source XMPP account where the vCard was obtained) in order to 
-        guarantee proper operation for XMPP accounts that are not part 
-        of a CUSAX deployment.
       </t>
       <figure anchor='figure-2' title='Example Deployment'>
         <artwork><![CDATA[
@@ -325,6 +309,29 @@ signaling  \         /   presence, etc.
                    +--------------+
         ]]></artwork>
       </figure>
+      <t>  
+        When rendering the XMPP roster CUSAX clients should make sure
+        that users are presented with a "Call" option for each roster 
+        entry that has a properly set "tel" field even if calling has
+        been disabled for that particular XMPP account. The usefulness 
+        of such a feature is not limited to CUSAX. After all, numbers
+        are entered in vCards in order to be dialed and called. Hence, 
+        as long as an XMPP client is equipped with accounts that have 
+        calling features it may wish to present the user with the
+        option of using these accounts to reach numbers from an XMPP 
+        vCard. In order to improve usability, in cases where clients are 
+        provisioned with only a single telephony-capable account they 
+        ought to do so immediately upon user request without asking for 
+        confirmation. This way CUSAX users whose only account with 
+        calling capabilities would often be the SIP part of their 
+        service, would have a better user experience. If on the other 
+        hand, the CUSAX client is aware of multiple telephony-capable 
+        accounts, it ought to present the user with the choice of 
+        reaching the phone number through any of them (including the 
+        source XMPP account where the vCard was obtained) in order to 
+        guarantee proper operation for XMPP accounts that are not part 
+        of a CUSAX deployment.
+      </t>
       <t> 
         In addition to discovering phone numbers from vCards, clients
         may also check for alternative communication methods as 
@@ -335,7 +342,7 @@ signaling  \         /   presence, etc.
       <t> 
         The client should use XMPP for all other forms of communication 
         with the contacts from its roster, which will occur naturally 
-        because they were retrieved through XMPP and only voice/video
+        because they were retrieved through XMPP and only audio/video
         features were disabled in the XMPP stack.
       </t>
       <t>
@@ -356,28 +363,27 @@ signaling  \         /   presence, etc.
         <figure>
           <artwork>
 <![CDATA[
-Call-Info: <xmpp:aice@example.com> ;purpose=impp
+Call-Info: <xmpp:alice@example.com> ;purpose=impp
 ]]>
           </artwork>
         </figure>
-        Note that the
-        information from these heads should only be used as a cue: the
-        actual AOR-to-JID binding would still need to be confirmed by a
-        vCard entry. If this confirmation succeeds the client would not
-        need to search the entire roster and retrieve all vCards. Not
-        performing the check would allow any caller (including malicious
-        ones) to employ someone else's identity and perform various
-        scams or Man in the Middle attacks.
+        Note that the information from the Call-Info header should only 
+        be used as a cue: the actual AOR-to-JID binding would still need 
+        to be confirmed by a vCard entry. If this confirmation succeeds 
+        the client would not need to search the entire roster and 
+        retrieve all vCards. Not performing the check would allow any 
+        caller (including malicious ones) to employ someone else's 
+        identity and perform various scams or Man-in-the-Middle attacks.
       </t>
     </section>
-    <section title='Context'>
+    <section title='Multi-Party Interactions'>
       <t>
         This document concentrates on problems related to one-to-one
         communication. While it is possible for clients and other
         specifications to build upon this and provide suggestions for
         improving the Unified Communications user experience in cases
-        of multi-user chats in conference calling (e.g. ways of mapping
-        XMPP Multi-User Chatrooms to conference calls and vice versa)
+        of multi-user chats in conference calling (e.g., ways of mapping
+        XMPP Multi-User Chatrooms to conference calls and vice versa),
         such mechanisms are considered out of scope for this version
         of CUSAX.
       </t>
@@ -392,7 +398,7 @@ Call-Info: <xmpp:aice@example.com> ;purpose=impp
       <t>
         For example, let's say atlanta.example.com observes the CUSAX
         policies described in this specification. All XMPP users at
-        atlanta.example.com are hence configured to have vCard-s that
+        atlanta.example.com are hence configured to have vCards that
         match their SIP identities. Alice is therefore used to making
         free, high-quality SIP calls to all the people in her roster.
         Alice can also make calls to the PSTN by simply dialing numbers.
@@ -416,20 +422,20 @@ Call-Info: <xmpp:aice@example.com> ;purpose=impp
         address is from a different domain, Alice would have no obvious
         and straightforward cues telling her that this is in fact a call
         to the PSTN. In addition to the potentially lower audio quality,
-        Alice may also end up unexpected charges for such calls.
+        Alice may also end up incurring unexpected charges for such calls.
       </t>
       <t>
         In order to avoid such issues, providers maintaining a CUSAX
         service for the users in their domain may choose to provide
-        additional cues (e.g. an audio tone or message) indicating that
-        a call would incur charges.
+        additional cues (e.g., a user interface warning or an an audio tone 
+        or message) indicating that a call would incur charges.
       </t>
       <t>
-        A slightly less disturbing scenario, where a SIP service would
-        only allow communication with intra-domain numbers would simply
-        prevent Alice from establishing a call with SIP's mobile.
+        A slightly less disturbing scenario, where a SIP service might
+        only allow communication with intra-domain numbers, would simply
+        prevent Alice from establishing a call with Bob's mobile.
         Providers should hence make sure that calls to extra-domain
-        numbers for with an appropriate audio or text error-message.
+        numbers are flagged with an appropriate audio or textual warning.
       </t>
     </section>
     <section title='Security Considerations'>
@@ -454,28 +460,9 @@ Call-Info: <xmpp:aice@example.com> ;purpose=impp
         features for detailed security considerations applying to 
         each "stack" in a CUSAX client.
       </t>
-      <t>
-        It is important to note that blind use of the P-Asserted-Domain
-        and P-Preferred-Identity headers MUST NOT happen outside of
-        trusted SIP domains, or otherwise it would be
-      </t>
     </section>
     <section title='IANA Considerations'>
       <t>This document has no actions for the IANA.</t>
-    </section>
-    <section title='Acknowledgements'>
-      <t>
-        This draft is inspired by the SIXPAC work from Markus Isomaki
-        and Simo Veikkolainen. Markus also provided various suggestions
-        for improving the documentation.
-      </t>
-      <t>
-        The authors would also like to thank the following persons for
-        their reviews and suggestions for improving this specification:
-        Aaron M Evans, Adrian Georgescu, Daniel Pocock, Gonzalo
-        Salgueiro, Kevin Gallagher, Olivier Crete, Saúl Ibarra Corretgé,
-        Sébastien Couture and Travis Reitter.
-      </t>
     </section>
   </middle>
   <back>
@@ -562,7 +549,7 @@ Call-Info: <xmpp:aice@example.com> ;purpose=impp
                 Cisco
                 </organization>
         </author>
-        <date month="October" year="2008" />
+        <date month="February" year="2013" />
         </front>
         <seriesInfo name="XEP" value="XEP-0152" />
       </reference>
@@ -590,5 +577,18 @@ Call-Info: <xmpp:aice@example.com> ;purpose=impp
                 target="http://xmpp.org/extensions/xep-0292.html"/>
       </reference>
     </references>
+    <section title='Acknowledgements'>
+      <t>
+        This draft is inspired by the "SIXPAC" work of Markus Isomaki
+        and Simo Veikkolainen. Markus also provided various suggestions
+        for improving the document.
+      </t>
+      <t>
+        The authors would also like to thank the following persons for
+        their reviews and suggestions: Aaron M. Evans, Sébastien Couture,
+        Olivier Crête, Kevin Gallagher, Adrian Georgescu, Saúl Ibarra 
+        Corretgé, Daniel Pocock, Travis Reitterd, and Gonzalo Salgueiro.
+      </t>
+    </section>
   </back>
 </rfc>
