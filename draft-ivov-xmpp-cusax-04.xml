@@ -143,6 +143,20 @@
         list management, and presence to whiteboarding and exchanging 
         files.
       </t>
+      <figure anchor='figure-1' title='Division of Responsibilities'>
+        <artwork><![CDATA[
++------------+      +-------------+
+| SIP Server |      | XMPP Server |
++------------+      +-------------+
+         \             /
+media     \           /  instant messaging,
+signaling  \         /   presence, etc.
+            \       /
+         +--------------+
+         | CUSAX Client |
+         +--------------+
+        ]]></artwork>
+      </figure>
       <t>
         This document explains how such hybrid offerings can be achieved 
         with a minimum of modifications to existing software while 
@@ -288,6 +302,29 @@
         guarantee proper operation for XMPP accounts that are not part 
         of a CUSAX deployment.
       </t>
+      <figure anchor='figure-2' title='Example Deployment'>
+        <artwork><![CDATA[
++--------------+
+| Provisioning |-----------+
+|    Server    |           |
++--------------+           v
+   |              +----------------+
+   |              | vCard Storage/ |
+   |              | User Directory |
+   |              +----------------+
+   |                /            \
+   |      +------------+      +-------------+
+   |      | SIP Server |      | XMPP Server |
+   |      +------------+      +-------------+
+   |               \             /
+   |      media     \           /  instant messaging,
+   |      signaling  \         /   presence, etc.
+   |                  \       /
+   |               +--------------+
+   +---------------| CUSAX Client |
+                   +--------------+
+        ]]></artwork>
+      </figure>
       <t> 
         In addition to discovering phone numbers from vCards, clients
         may also check for alternative communication methods as 
