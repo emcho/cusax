@@ -32,18 +32,6 @@
         <email>emcho@jitsi.org</email>
       </address>
     </author>
-    <author initials='E.' surname='Marocco' fullname='Enrico Marocco'>
-      <organization>Telecom Italia</organization>
-      <address>
-        <postal>
-          <street>Via G. Reiss Romoli, 274</street>
-          <city>Turin</city>
-          <code>10148</code>
-          <country>Italy</country>
-        </postal>
-        <email>enrico.marocco@telecomitalia.it</email>
-      </address>
-    </author>
     <author initials='P.' surname='Saint-Andre' 
             fullname='Peter Saint-Andre'>
       <organization>Cisco Systems, Inc.</organization>
@@ -57,6 +45,18 @@
         </postal>
         <phone>+1-303-308-3282</phone>
         <email>psaintan@cisco.com</email>
+      </address>
+    </author>
+    <author initials='E.' surname='Marocco' fullname='Enrico Marocco'>
+      <organization>Telecom Italia</organization>
+      <address>
+        <postal>
+          <street>Via G. Reiss Romoli, 274</street>
+          <city>Turin</city>
+          <code>10148</code>
+          <country>Italy</country>
+        </postal>
+        <email>enrico.marocco@telecomitalia.it</email>
       </address>
     </author>
     <date />
