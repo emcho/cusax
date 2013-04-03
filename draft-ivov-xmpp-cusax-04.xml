@@ -378,7 +378,7 @@ signaling  \         /   presence, etc.
       <t>
         In addition, in order to avoid the effort of iterating over an
         entire roster and retrieving all vCards, CUSAX clients may use
-        a SIP Call-Info header whose 'purpose' header field parameter
+        a SIP Call-Info header whose 'purpose' token field parameter
         has a value of "impp" as described in
         <xref target='I-D.saintandre-impp-call-info'/> such as the
         following:
