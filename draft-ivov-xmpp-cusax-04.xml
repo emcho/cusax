@@ -85,7 +85,7 @@
     <section title='Introduction'>
       <t>
         Historically <xref target="RFC3261">SIP</xref> and 
-        <xref target="RFC6120">XMPP</xref> have often been implemented 
+        <xref target="RFC6120">XMPP</xref> have often been implemented
         and deployed with different purposes: from its very start SIP's 
         primary goal has been to provide a means of conducting "Internet 
         telephone calls". XMPP on the other hand, has, from its Jabber
@@ -123,10 +123,11 @@
         for telephony-like services, especially in enterprises where 
         users are accustomed to features such as voice mail, call park,
         call queues, conference bridges and many others that are rarely
-        (if at all) available in Jingle-based software. XMPP implementations, on 
-        the other hand, greatly outnumber and outperform those available
-        for instant messaging and presence extensions developed in 
-        the SIMPLE WG, such as <xref target="RFC4975">MSRP</xref> and 
+        (if at all) available in Jingle-based software. XMPP
+        implementations, on the other hand, greatly outnumber and
+        outperform those available for instant messaging and presence
+        extensions developed in the SIMPLE WG, such as
+        <xref target="RFC4975">MSRP</xref> and
         <xref target="RFC4825">XCAP</xref>.  
       </t>
       <t>
@@ -286,6 +287,52 @@ signaling  \         /   presence, etc.
         user database for both services) what SIP AOR corresponds to 
         a given XMPP user.
       </t>
+<<<<<<< HEAD
+=======
+      <t>  
+        When rendering the XMPP roster CUSAX clients should make sure
+        that users are presented with a "Call" option for each roster 
+        entry that has a properly set "tel" field even if calling has
+        been disabled for that particular XMPP account. The usefulness 
+        of such a feature is not limited to CUSAX. After all, numbers
+        are entered in vCards in order to be dialed and called. Hence, 
+        as long as an XMPP client is equipped with accounts that have 
+        calling features it may wish to present the user with the
+        option of using these accounts to reach numbers from an XMPP 
+        vCard. In order to improve usability, in cases where clients are 
+        provisioned with only a single telephony-capable account they 
+        ought to initiate calls immediately upon user request without
+        asking users to indicate an account that the call should go
+        through. This way CUSAX users whose only account with calling
+        capabilities would often be the SIP part of their service, would
+        have a better user experience where from a user perspective:
+        calls "just work at the click of a button".
+      </t>
+      <t>
+        In order to provide a similar experience in the presence of
+        multiple telephony capable accounts, client implementers may
+        choose to provide means for provisioning the relationship
+        between the SIP and XMPP accounts of a CUSAX service. For
+        example, let's say that Alice's service provider has opened the
+        an XMPP and a SIP account for her. When provisioning her client
+        the service could indicate that alice@xmpp.example.com has a
+        CUSAX relation to alice@sip.example.com. This way whenever Alice
+        triggers a call to a contact in her roster, the client would be
+        able to automatically initiate this call through her example.com
+        SIP account even if other possibilities exist.
+      </t>
+      <t>
+        If on the other hand, no relationship has been configured between
+        the SIP and XMPP accounts of a CUSAX service and the client is
+        aware of multiple telephony-capable accounts, it ought
+        to present the user with the choice of reaching the phone number
+        through any of them. This includes the source XMPP account where
+        the vCard was obtained (in case its telephony capabilities are
+        not disabled through configuration or provisioning),  in order
+        to guarantee proper operation for XMPP accounts that are not
+        part of a CUSAX deployment.
+      </t>
+>>>>>>> Mentions possibility for defining relationship between SIP and XMPP accounts via provisioning.
       <figure anchor='figure-2' title='Example Deployment'>
         <artwork><![CDATA[
 +--------------+
