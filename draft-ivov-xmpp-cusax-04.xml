@@ -173,9 +173,9 @@ signaling  \         /   presence, etc.
         XMPP functionality in end-user-oriented clients. By intent it
         does not define methods for protocol-level mapping between SIP
         and XMPP, as might be used within a server-side gateway between 
-        a SIP network and an XMPP network. A separate series of
-        documents has been produced that defines such mappings. More 
-        generally, this document does not address the topic of 
+        a SIP network and an XMPP network (a separate series of
+        documents has been produced that defines such mappings). More 
+        generally, this document does not describe service policies for
         inter-domain communication (often called "federation") between
         service providers (e.g., how a service provider that offers a
         combined SIP-XMPP service might communicate with a SIP-only or

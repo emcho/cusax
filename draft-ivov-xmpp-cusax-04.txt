@@ -174,13 +174,14 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
    functionality in end-user-oriented clients.  By intent it does not
    define methods for protocol-level mapping between SIP and XMPP, as
    might be used within a server-side gateway between a SIP network and
-   an XMPP network.  A separate series of documents has been produced
-   that defines such mappings.  More generally, this document does not
-   address the topic of inter-domain communication (often called
-   "federation") between service providers (e.g., how a service provider
-   that offers a combined SIP-XMPP service might communicate with a SIP-
-   only or XMPP-only service), nor does it describe the reasons why a
-   service provider might choose SIP or XMPP for various features.
+   an XMPP network (a separate series of documents has been produced
+   that defines such mappings).  More generally, this document does not
+   describe service policies for inter-domain communication (often
+   called "federation") between service providers (e.g., how a service
+   provider that offers a combined SIP-XMPP service might communicate
+   with a SIP-only or XMPP-only service), nor does it describe the
+   reasons why a service provider might choose SIP or XMPP for various
+   features.
 
    Finally, this document concentrates on use cases where the SIP
    services and XMPP services are controlled by one and the same
@@ -217,7 +218,6 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
    Because many of the features that a CUSAX client would privilege in
    one protocol would also be available in the other, clients should
-   make it possible for such features to be disabled for a specific
 
 
 
@@ -226,6 +226,7 @@ Ivov, et al.            Expires October 06, 2013                [Page 4]
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
+   make it possible for such features to be disabled for a specific
    account.  In particular, it is suggested that clients allow for audio
    and video calling features to be disabled for XMPP accounts, and that
    instant messaging and presence features should also be made optional
@@ -273,7 +274,6 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
    To ensure that the foregoing approach is always respected, service
    providers might consider (1) preventing clients (and hence users)
    from modifying the vCard "tel" fields or (2) applying some form of
-   validation before storing changes.  Of course such validation would
 
 
 
@@ -282,6 +282,7 @@ Ivov, et al.            Expires October 06, 2013                [Page 5]
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
+   validation before storing changes.  Of course such validation would
    be feasible mostly in cases where a single provider controls both the
    XMPP and the SIP service since such providers would "know" (e.g.,
    based on use of a common user database for both services) what SIP
@@ -329,7 +330,6 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
    In order to provide a similar experience when the user has multiple
    telephony-capable accounts, client implementers may choose to
    indicate the existence of a special relationship between the SIP and
-   XMPP accounts of a CUSAX service.  For example, let's say that
 
 
 
@@ -338,6 +338,7 @@ Ivov, et al.            Expires October 06, 2013                [Page 6]
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
+   XMPP accounts of a CUSAX service.  For example, let's say that
    Alice's service provider has opened both an XMPP account and a SIP
    account for her.  During or after provisioning, her client could
    indicate that alice@xmpp.example.com has a CUSAX relation to
@@ -384,8 +385,7 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
 
-   Note that the information from the Call-Info header should only be
-   used as a cue: the actual AOR-to-JID binding would still need to be
+
 
 
 
@@ -394,6 +394,8 @@ Ivov, et al.            Expires October 06, 2013                [Page 7]
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
+   Note that the information from the Call-Info header should only be
+   used as a cue: the actual AOR-to-JID binding would still need to be
    confirmed by a vCard entry.  If this confirmation succeeds the client
    would not need to search the entire roster and retrieve all vCards.
    Not performing the check would allow any caller (including malicious
@@ -436,11 +438,9 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
    client would pick up this number and make it possible for Alice to
    start a call to Bob's mobile phone number.
 
-   This could be a problem because, other than the fact that Bob's
-   address is from a different domain, Alice would have no obvious and
-   straightforward cues telling her that this is in fact a call to the
-   PSTN.  In addition to the potentially lower audio quality, Alice may
-   also end up incurring unexpected charges for such calls.
+
+
+
 
 
 
@@ -449,6 +449,12 @@ Ivov, et al.            Expires October 06, 2013                [Page 8]
 
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
+
+   This could be a problem because, other than the fact that Bob's
+   address is from a different domain, Alice would have no obvious and
+   straightforward cues telling her that this is in fact a call to the
+   PSTN.  In addition to the potentially lower audio quality, Alice may
+   also end up incurring unexpected charges for such calls.
 
    In order to avoid such issues, providers maintaining a CUSAX service
    for the users in their domain may choose to provide additional cues
@@ -492,12 +498,6 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
               Protocol (SIP)", draft-saintandre-impp-call-info-00 (work
               in progress), March 2013.
 
-   [RFC3261]  Rosenberg, J., Schulzrinne, H., Camarillo, G., Johnston,
-              A., Peterson, J., Sparks, R., Handley, M., and E.
-              Schooler, "SIP: Session Initiation Protocol", RFC 3261,
-              June 2002.
-
-
 
 
 
@@ -505,6 +505,11 @@ Ivov, et al.            Expires October 06, 2013                [Page 9]
 
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
+
+   [RFC3261]  Rosenberg, J., Schulzrinne, H., Camarillo, G., Johnston,
+              A., Peterson, J., Sparks, R., Handley, M., and E.
+              Schooler, "SIP: Session Initiation Protocol", RFC 3261,
+              June 2002.
 
    [RFC3264]  Rosenberg, J. and H. Schulzrinne, "An Offer/Answer Model
               with Session Description Protocol (SDP)", RFC 3264, June
@@ -549,11 +554,6 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008.
 
-   [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
-              "Session Traversal Utilities for NAT (STUN)", RFC 5389,
-              October 2008.
-
-
 
 
 
@@ -561,6 +561,10 @@ Ivov, et al.            Expires October 06, 2013               [Page 10]
 
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
+
+   [RFC5389]  Rosenberg, J., Mahy, R., Matthews, P., and D. Wing,
+              "Session Traversal Utilities for NAT (STUN)", RFC 5389,
+              October 2008.
 
    [RFC5751]  Ramsdell, B. and S. Turner, "Secure/Multipurpose Internet
               Mail Extensions (S/MIME) Version 3.2 Message
@@ -607,16 +611,16 @@ Internet-Draft        Combined Use of SIP and XMPP            April 2013
               Hildebrand, J. and P. Saint-Andre, "XEP-0152: Reachability
               Addresses", XEP XEP-0152, February 2013.
 
-   [XEP-0292]
-              Saint-Andre, P. and S. Mizzi, "vCard4 Over XMPP", XSF XEP
-              0292, October 2011.
-
 
 
 Ivov, et al.            Expires October 06, 2013               [Page 11]
 
 Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
+
+   [XEP-0292]
+              Saint-Andre, P. and S. Mizzi, "vCard4 Over XMPP", XSF XEP
+              0292, October 2011.
 
 Appendix A.  Acknowledgements
 
@@ -657,10 +661,6 @@ Authors' Addresses
    Italy
 
    Email: enrico.marocco@telecomitalia.it
-
-
-
-
 
 
 
