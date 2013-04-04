@@ -325,32 +325,35 @@ signaling  \         /   presence, etc.
         telephony-capable account they ought to initiate calls
         immediately upon user request without asking users to indicate
         an account that the call should go through. This way CUSAX users
-        whose only account with calling capabilities would often be the
-        SIP part of their service, would have a better user experience
-        where from a user perspective: calls "just work at the click of
+        (whose only account with calling capabilities is usually the
+        SIP part of their service) would have a better experience, since
+        from the user's perspective calls "just work at the click of
         a button".
       </t>
       <t>
-        In order to provide a similar experience in the presence of
-        multiple telephony capable accounts, client implementers may
-        choose to provide means for provisioning the relationship
+        In order to provide a similar experience when the user has
+        multiple telephony-capable accounts, client implementers may
+        choose to indicate the existence of a special relationship
         between the SIP and XMPP accounts of a CUSAX service. For
-        example, let's say that Alice's service provider has opened an
-        XMPP and a SIP account for her. When provisioning her client
-        the service could indicate that alice@xmpp.example.com has a
-        CUSAX relation to alice@sip.example.com. This way whenever Alice
-        triggers a call to a contact in her roster, the client would be
-        able to automatically initiate this call through her example.com
-        SIP account even if other possibilities exist.
+        example, let's say that Alice's service provider has opened both an
+        XMPP account and a SIP account for her. During or after provisioning,
+        her client could indicate that alice@xmpp.example.com has a
+        CUSAX relation to alice@sip.example.com (i.e., that they are two
+        aspects of the same service). This way whenever Alice
+        triggers a call to a contact in her XMPP roster, the client would 
+        preferentially initiate this call through her example.com
+        SIP account even if other possibilities exist (such as the XMPP
+        account where the vCard was obtained or a SIP account with another 
+        provider).
       </t>
       <t>
-        If on the other hand, no relationship has been configured
+        If, on the other hand, no relationship has been configured
         between the SIP and XMPP accounts of a CUSAX service and the
         client is aware of multiple telephony-capable accounts, it ought
-        to present the user with the choice of reaching the phone number
-        through any of them. This includes the source XMPP account where
-        the vCard was obtained (in case its telephony capabilities are
-        not disabled through configuration or provisioning),  in order
+        to present the user with the choice of reaching the contact
+        through any of those accounts. This includes the source XMPP account 
+        where the vCard was obtained (in case its telephony capabilities are
+        not disabled through configuration or provisioning), in order
         to guarantee proper operation for XMPP accounts that are not
         part of a CUSAX deployment.
       </t>
