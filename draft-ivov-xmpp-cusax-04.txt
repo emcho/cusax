@@ -4,11 +4,11 @@
 
 Network Working Group                                            E. Ivov
 Internet-Draft                                                     Jitsi
-Intended status: Informational                                E. Marocco
-Expires: October 01, 2013                                 Telecom Italia
-                                                          P. Saint-Andre
-                                                     Cisco Systems, Inc.
-                                                          March 30, 2013
+Intended status: Informational                            P. Saint-Andre
+Expires: October 06, 2013                            Cisco Systems, Inc.
+                                                              E. Marocco
+                                                          Telecom Italia
+                                                          April 04, 2013
 
 
   CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the
@@ -17,7 +17,7 @@ Expires: October 01, 2013                                 Telecom Italia
 
 Abstract
 
-   This document describes recommended practices for combined use of the
+   This document describes suggested practices for combined use of the
    Session Initiation Protocol (SIP) and the Extensible Messaging and
    Presence Protocol (XMPP).  Such practices aim to provide a single
    fully featured real-time communication service by using complementary
@@ -48,14 +48,14 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 01, 2013.
+   This Internet-Draft will expire on October 06, 2013.
 
 
 
 
-Ivov, et al.            Expires October 01, 2013                [Page 1]
+Ivov, et al.            Expires October 06, 2013                [Page 1]
 
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
 Copyright Notice
@@ -78,13 +78,13 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Client Bootstrap  . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Operation . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Context . . . . . . . . . . . . . . . . . . . . . . . . . . .   7
-   5.  Federation  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   4.  Multi-Party Interactions  . . . . . . . . . . . . . . . . . .   8
+   5.  Federation  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   9
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
-   9.  Informative References  . . . . . . . . . . . . . . . . . . .   9
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .   9
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  12
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Ivov, et al.            Expires October 01, 2013                [Page 2]
+Ivov, et al.            Expires October 06, 2013                [Page 2]
 
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
    o  Similarly, the XMPP community and the XMPP Standards Foundation
@@ -165,9 +165,9 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
 
 
-Ivov, et al.            Expires October 01, 2013                [Page 3]
+Ivov, et al.            Expires October 06, 2013                [Page 3]
 
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
    Note that this document is focused on coexistence of SIP and XMPP
@@ -175,22 +175,27 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    define methods for protocol-level mapping between SIP and XMPP, as
    might be used within a server-side gateway between a SIP network and
    an XMPP network.  A separate series of documents has been produced
-   that defines such mappings.
+   that defines such mappings.  More generally, this document does not
+   address the topic of inter-domain communication (often called
+   "federation") between service providers (e.g., how a service provider
+   that offers a combined SIP-XMPP service might communicate with a SIP-
+   only or XMPP-only service), nor does it describe the reasons why a
+   service provider might choose SIP or XMPP for various features.
 
-   Finally, this document concentrates on use cases where the SIP and
-   the XMPP services are controlled by one an the same provider.  This
-   document being of an informational nature, it is not unreasonable for
-   clients to apply some of the guidelines here even in cases where
-   there is no established relationship between the SIP and the XMPP
-   services.  For example, it is reasonable for a client to provide a
-   means to its users to easily start a call to a phone number recorded
-   in a vCard.  The exact set of rules to follow in such cases is left
-   to application developers.
+   Finally, this document concentrates on use cases where the SIP
+   services and XMPP services are controlled by one and the same
+   provider.  Since this document is of an informational nature, it is
+   not unreasonable for clients to apply some of the guidelines here
+   even in cases where there is no established relationship between the
+   SIP and the XMPP services (for example, it is reasonable for a client
+   to provide a way for its users to easily start a call to a phone
+   number recorded in a vCard).  However, the exact set of rules to
+   follow in such cases is left to application developers.
 
 2.  Client Bootstrap
 
    One of the main problems of using two distinct protocols when
-   providing one service is the impact on usability.  E-mail services,
+   providing one service is the impact on usability.  Email services,
    for example, have long been affected by the mixed use of SMTP for
    outgoing mail and POP3 or IMAP for incoming mail, making it rather
    complicated for inexperienced users to configure a mail client and
@@ -199,8 +204,8 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    various mail clients.  Client developers and communication device
    manufacturers on the other hand often ship with a number of wizards
    that enable users to easily set up a new account for a number of
-   popular e-mail services.  While this may improve the situation to
-   some extent, the user experience is still clearly sub-optimal.
+   popular email services.  While this may improve the situation to some
+   extent, the user experience is still clearly sub-optimal.
 
    While it should be possible for CUSAX users to manually configure
    their separate SIP and XMPP accounts, dual-stack SIP/XMPP clients
@@ -213,28 +218,28 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    Because many of the features that a CUSAX client would privilege in
    one protocol would also be available in the other, clients should
    make it possible for such features to be disabled for a specific
-   account.  In particular, it is suggested that clients allow for audio
-   /video calling features to be disabled for XMPP accounts.
-   Additionally, instant messaging and presence features should also be
-   made optional for SIP accounts.
 
 
 
-
-Ivov, et al.            Expires October 01, 2013                [Page 4]
+Ivov, et al.            Expires October 06, 2013                [Page 4]
 
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
 
-   The main advantage of the above would be that clients would be able
-   to continue to function properly and use the complete feature set of
-   stand-alone SIP and XMPP accounts.
+   account.  In particular, it is suggested that clients allow for audio
+   and video calling features to be disabled for XMPP accounts, and that
+   instant messaging and presence features should also be made optional
+   for SIP accounts.
+
+   The main advantage of this approach is that clients would be able to
+   continue to function properly and use the complete feature set of
+   standalone SIP and XMPP accounts.
 
    Once client bootstrap has completed, clients need to log in
    independently to the SIP and XMPP accounts that make up the CUSAX
    "service" and then maintain both these connections.  In order to
    improve user experience, when reporting connection status clients may
-   also wish to present the CUSAX XMPP connection as an "instant
+   also wish to present the XMPP CUSAX connection as an "instant
    messaging" or a "chat" account.  Similarly they could also depict the
    SIP CUSAX connection as a "Voice and Video" or a "Telephony"
    connection.  The exact naming is of course entirely up to
@@ -253,12 +258,12 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    service administrators should make sure that at least one of the
    vCard [RFC6350] "tel" fields for each contact is properly populated
    with a SIP URI or a phone number when an XMPP protocol for vCard
-   storage (e.g., [XEP-0054] or [XEP-0292]) is used.  There are no
-   limitations as to the form of that number.  For example while
-   maintaining a certain consistency between SIP AORs and XMPP JIDs, it
-   is by no means required.  It is quite important however that the
-   phone number or SIP AOR stored in the vCard be reachable through the
-   SIP aspect of this CUSAX service.
+   storage is used (e.g., [XEP-0054] or [XEP-0292]).  There are no
+   limitations as to the form of that number.  For example while it is
+   desirable to maintain a certain consistency between SIP AORs and XMPP
+   JIDs, that is by no means required.  It is quite important however
+   that the phone number or SIP AOR stored in the vCard be reachable
+   through the SIP aspect of this CUSAX service.
 
    Additionally, clients that have separete triggers (buttons) for audio
    and video calls may choose to use the presence or absence of the
@@ -269,38 +274,18 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    providers might consider (1) preventing clients (and hence users)
    from modifying the vCard "tel" fields or (2) applying some form of
    validation before storing changes.  Of course such validation would
+
+
+
+Ivov, et al.            Expires October 06, 2013                [Page 5]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
+
    be feasible mostly in cases where a single provider controls both the
    XMPP and the SIP service since such providers would "know" (e.g.,
    based on use of a common user database for both services) what SIP
    AOR corresponds to a given XMPP user.
-
-
-
-
-Ivov, et al.            Expires October 01, 2013                [Page 5]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
-
-   When rendering the XMPP roster CUSAX clients should make sure that
-   users are presented with a "Call" option for each roster entry that
-   has a properly set "tel" field even if calling has been disabled for
-   that particular XMPP account.  The usefulness of such a feature is
-   not limited to CUSAX.  After all, numbers are entered in vCards in
-   order to be dialed and called.  Hence, as long as an XMPP client is
-   equipped with accounts that have calling features it may wish to
-   present the user with the option of using these accounts to reach
-   numbers from an XMPP vCard.  In order to improve usability, in cases
-   where clients are provisioned with only a single telephony-capable
-   account they ought to do so immediately upon user request without
-   asking for confirmation.  This way CUSAX users whose only account
-   with calling capabilities would often be the SIP part of their
-   service, would have a better user experience.  If on the other hand,
-   the CUSAX client is aware of multiple telephony-capable accounts, it
-   ought to present the user with the choice of reaching the phone
-   number through any of them (including the source XMPP account where
-   the vCard was obtained) in order to guarantee proper operation for
-   XMPP accounts that are not part of a CUSAX deployment.
 
    +--------------+
    | Provisioning |-----------+
@@ -324,23 +309,62 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
                        Figure 2: Example Deployment
 
+   When rendering the roster for a particular XMPP account CUSAX clients
+   should make sure that users are presented with a "Call" option for
+   each roster entry that has a properly set "tel" field even if calling
+   has been disabled for that particular XMPP account.  The usefulness
+   of such a feature is not limited to CUSAX.  After all, numbers are
+   entered in vCards in order to be dialed and called.  Hence, as long
+   as an XMPP client is equipped with accounts that have calling
+   features it may wish to present the user with the option of using
+   these accounts to reach numbers from an XMPP vCard.  In order to
+   improve usability, in cases where clients are provisioned with only a
+   single telephony-capable account they ought to initiate calls
+   immediately upon user request without asking users to indicate an
+   account that the call should go through.  This way CUSAX users (whose
+   only account with calling capabilities is usually the SIP part of
+   their service) would have a better experience, since from the user's
+   perspective calls "just work at the click of a button".
+
+   In order to provide a similar experience when the user has multiple
+   telephony-capable accounts, client implementers may choose to
+   indicate the existence of a special relationship between the SIP and
+   XMPP accounts of a CUSAX service.  For example, let's say that
+
+
+
+Ivov, et al.            Expires October 06, 2013                [Page 6]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
+
+   Alice's service provider has opened both an XMPP account and a SIP
+   account for her.  During or after provisioning, her client could
+   indicate that alice@xmpp.example.com has a CUSAX relation to
+   alice@sip.example.com (i.e., that they are two aspects of the same
+   service).  This way whenever Alice triggers a call to a contact in
+   her XMPP roster, the client would preferentially initiate this call
+   through her example.com SIP account even if other possibilities exist
+   (such as the XMPP account where the vCard was obtained or a SIP
+   account with another provider).
+
+   If, on the other hand, no relationship has been configured between
+   the SIP and XMPP accounts of a CUSAX service and the client is aware
+   of multiple telephony-capable accounts, it ought to present the user
+   with the choice of reaching the contact through any of those
+   accounts.  This includes the source XMPP account where the vCard was
+   obtained (in case its telephony capabilities are not disabled through
+   configuration or provisioning), in order to guarantee proper
+   operation for XMPP accounts that are not part of a CUSAX deployment.
+
    In addition to discovering phone numbers from vCards, clients may
    also check for alternative communication methods as advertised in
    XMPP presence broadcasts and Personal Eventing Protocol nodes as
    described in XEP-0152: Reachability Addresses [XEP-0152].
 
-
-
-
-
-Ivov, et al.            Expires October 01, 2013                [Page 6]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
-
    The client should use XMPP for all other forms of communication with
    the contacts from its roster, which will occur naturally because they
-   were retrieved through XMPP and only voice/video features were
+   were retrieved through XMPP and only audio/video features were
    disabled in the XMPP stack.
 
    When receiving SIP calls, clients may wish to determine the identity
@@ -351,31 +375,39 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
    In addition, in order to avoid the effort of iterating over an entire
    roster and retrieving all vCards, CUSAX clients may use a SIP Call-
-   Info header whose 'purpose' header field parameter has a value of
+   Info header whose 'purpose' token field parameter has a value of
    "impp" as described in [I-D.saintandre-impp-call-info] such as the
    following:
 
 
-   Call-Info: <xmpp:aice@example.com> ;purpose=impp
+   Call-Info: <xmpp:alice@example.com> ;purpose=impp
 
 
 
-   Note that the information from these heads should only be used as a
-   cue: the actual AOR-to-JID binding would still need to be confirmed
-   by a vCard entry.  If this confirmation succeeds the client would not
-   need to search the entire roster and retrieve all vCards.  Not
-   performing the check would allow any caller (including malicious
+   Note that the information from the Call-Info header should only be
+   used as a cue: the actual AOR-to-JID binding would still need to be
+
+
+
+Ivov, et al.            Expires October 06, 2013                [Page 7]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
+
+   confirmed by a vCard entry.  If this confirmation succeeds the client
+   would not need to search the entire roster and retrieve all vCards.
+   Not performing the check would allow any caller (including malicious
    ones) to employ someone else's identity and perform various scams or
-   Man in the Middle attacks.
+   Man-in-the-Middle attacks.
 
-4.  Context
+4.  Multi-Party Interactions
 
    This document concentrates on problems related to one-to-one
    communication.  While it is possible for clients and other
    specifications to build upon this and provide suggestions for
    improving the Unified Communications user experience in cases of
-   multi-user chats in conference calling (e.g.  ways of mapping XMPP
-   Multi-User Chatrooms to conference calls and vice versa) such
+   multi-user chats in conference calling (e.g., ways of mapping XMPP
+   Multi-User Chatrooms to conference calls and vice versa), such
    mechanisms are considered out of scope for this version of CUSAX.
 
 5.  Federation
@@ -385,18 +417,9 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    that differences in administration policies may sometimes lead to
    potentially confusing user experiences.
 
-
-
-
-
-Ivov, et al.            Expires October 01, 2013                [Page 7]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
-
    For example, let's say atlanta.example.com observes the CUSAX
    policies described in this specification.  All XMPP users at
-   atlanta.example.com are hence configured to have vCard-s that match
+   atlanta.example.com are hence configured to have vCards that match
    their SIP identities.  Alice is therefore used to making free, high-
    quality SIP calls to all the people in her roster.  Alice can also
    make calls to the PSTN by simply dialing numbers.  She may even be
@@ -417,18 +440,26 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    address is from a different domain, Alice would have no obvious and
    straightforward cues telling her that this is in fact a call to the
    PSTN.  In addition to the potentially lower audio quality, Alice may
-   also end up unexpected charges for such calls.
+   also end up incurring unexpected charges for such calls.
+
+
+
+
+Ivov, et al.            Expires October 06, 2013                [Page 8]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
 
    In order to avoid such issues, providers maintaining a CUSAX service
    for the users in their domain may choose to provide additional cues
-   (e.g.  an audio tone or message) indicating that a call would incur
-   charges.
+   (e.g., a user interface warning or an an audio tone or message)
+   indicating that a call would incur charges.
 
-   A slightly less disturbing scenario, where a SIP service would only
-   allow communication with intra-domain numbers would simply prevent
-   Alice from establishing a call with SIP's mobile.  Providers should
-   hence make sure that calls to extra-domain numbers for with an
-   appropriate audio or text error-message.
+   A slightly less disturbing scenario, where a SIP service might only
+   allow communication with intra-domain numbers, would simply prevent
+   Alice from establishing a call with Bob's mobile.  Providers should
+   hence make sure that calls to extra-domain numbers are flagged with
+   an appropriate audio or textual warning.
 
 6.  Security Considerations
 
@@ -442,14 +473,6 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    successfully negotiate Transport Layer Security (TLS) [RFC5246] when
    connecting to the XMPP aspect of the service but not when connecting
    to the SIP aspect.  Such mismatches could introduce the possibility
-
-
-
-Ivov, et al.            Expires October 01, 2013                [Page 8]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
-
    of downgrade attacks.  User agent developers and service providers
    ought to ensure that such mismatches are avoided as much as possible.
 
@@ -457,27 +480,11 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    for detailed security considerations applying to each "stack" in a
    CUSAX client.
 
-   It is important to note that blind use of the P-Asserted-Domain and P
-   -Preferred-Identity headers MUST NOT happen outside of trusted SIP
-   domains, or otherwise it would be
-
 7.  IANA Considerations
 
    This document has no actions for the IANA.
 
-8.  Acknowledgements
-
-   This draft is inspired by the SIXPAC work from Markus Isomaki and
-   Simo Veikkolainen.  Markus also provided various suggestions for
-   improving the documentation.
-
-   The authors would also like to thank the following persons for their
-   reviews and suggestions for improving this specification: Aaron M
-   Evans, Adrian Georgescu, Daniel Pocock, Gonzalo Salgueiro, Kevin
-   Gallagher, Olivier Crete, Saul Ibarra Corretge, Sebastien Couture and
-   Travis Reitter.
-
-9.  Informative References
+8.  Informative References
 
    [I-D.saintandre-impp-call-info]
               Saint-Andre, P., "Instant Messaging and Presence Purpose
@@ -490,6 +497,15 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
               Schooler, "SIP: Session Initiation Protocol", RFC 3261,
               June 2002.
 
+
+
+
+
+Ivov, et al.            Expires October 06, 2013                [Page 9]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
+
    [RFC3264]  Rosenberg, J. and H. Schulzrinne, "An Offer/Answer Model
               with Session Description Protocol (SDP)", RFC 3264, June
               2002.
@@ -498,13 +514,6 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
               "STUN - Simple Traversal of User Datagram Protocol (UDP)
               Through Network Address Translators (NATs)", RFC 3489,
               March 2003.
-
-
-
-Ivov, et al.            Expires October 01, 2013                [Page 9]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
 
    [RFC3711]  Baugher, M., McGrew, D., Naslund, M., Carrara, E., and K.
               Norrman, "The Secure Real-time Transport Protocol (SRTP)",
@@ -544,6 +553,15 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
               "Session Traversal Utilities for NAT (STUN)", RFC 5389,
               October 2008.
 
+
+
+
+
+Ivov, et al.            Expires October 06, 2013               [Page 10]
+
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
+
+
    [RFC5751]  Ramsdell, B. and S. Turner, "Secure/Multipurpose Internet
               Mail Extensions (S/MIME) Version 3.2 Message
               Specification", RFC 5751, January 2010.
@@ -551,16 +569,6 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    [RFC5766]  Mahy, R., Matthews, P., and J. Rosenberg, "Traversal Using
               Relays around NAT (TURN): Relay Extensions to Session
               Traversal Utilities for NAT (STUN)", RFC 5766, April 2010.
-
-
-
-
-
-
-Ivov, et al.            Expires October 01, 2013               [Page 10]
-
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
-
 
    [RFC5802]  Newman, C., Menon-Sen, A., Melnikov, A., and N. Williams,
               "Salted Challenge Response Authentication Mechanism
@@ -597,26 +605,31 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
    [XEP-0152]
               Hildebrand, J. and P. Saint-Andre, "XEP-0152: Reachability
-              Addresses", XEP XEP-0152, October 2008.
+              Addresses", XEP XEP-0152, February 2013.
 
    [XEP-0292]
               Saint-Andre, P. and S. Mizzi, "vCard4 Over XMPP", XSF XEP
               0292, October 2011.
 
-Authors' Addresses
 
 
-
-
-
-
-
-
-
-Ivov, et al.            Expires October 01, 2013               [Page 11]
+Ivov, et al.            Expires October 06, 2013               [Page 11]
 
-Internet-Draft        Combined Use of SIP and XMPP            March 2013
+Internet-Draft        Combined Use of SIP and XMPP            April 2013
 
+
+Appendix A.  Acknowledgements
+
+   This draft is inspired by the "SIXPAC" work of Markus Isomaki and
+   Simo Veikkolainen.  Markus also provided various suggestions for
+   improving the document.
+
+   The authors would also like to thank the following persons for their
+   reviews and suggestions: Aaron M.  Evans, Sebastien Couture, Olivier
+   Crete, Kevin Gallagher, Adrian Georgescu, Saul Ibarra Corretge,
+   Daniel Pocock, Travis Reitterd, and Gonzalo Salgueiro.
+
+Authors' Addresses
 
    Emil Ivov
    Jitsi
@@ -625,15 +638,6 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
    Phone: +33-672-811-555
    Email: emcho@jitsi.org
-
-
-   Enrico Marocco
-   Telecom Italia
-   Via G. Reiss Romoli, 274
-   Turin  10148
-   Italy
-
-   Email: enrico.marocco@telecomitalia.it
 
 
    Peter Saint-Andre
@@ -646,6 +650,13 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
    Email: psaintan@cisco.com
 
 
+   Enrico Marocco
+   Telecom Italia
+   Via G. Reiss Romoli, 274
+   Turin  10148
+   Italy
+
+   Email: enrico.marocco@telecomitalia.it
 
 
 
@@ -657,15 +668,4 @@ Internet-Draft        Combined Use of SIP and XMPP            March 2013
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Ivov, et al.            Expires October 01, 2013               [Page 12]
+Ivov, et al.            Expires October 06, 2013               [Page 12]
