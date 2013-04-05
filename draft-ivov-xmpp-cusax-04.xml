@@ -506,26 +506,12 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
         target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-00.txt' />
 </reference>
       <?rfc include="reference.RFC.3261"?>
-      <?rfc include="reference.RFC.3264"?>
-      <?rfc include="reference.RFC.3489"?>
-      <?rfc include="reference.RFC.3711"?>
-      <?rfc include="reference.RFC.4474"?>
-      <?rfc include="reference.RFC.4566"?>
-      <?rfc include="reference.RFC.5122"?>
-      <?rfc include="reference.RFC.4787"?>
       <?rfc include="reference.RFC.4825"?>
       <?rfc include="reference.RFC.4975"?>
-      <?rfc include="reference.RFC.5245"?>
       <?rfc include="reference.RFC.5246"?>
-      <?rfc include="reference.RFC.5389"?>
-      <?rfc include="reference.RFC.5751"?>
-      <?rfc include="reference.RFC.5766"?>
       <?rfc include="reference.RFC.5802"?>
-      <?rfc include="reference.RFC.5853"?>
-      <?rfc include="reference.RFC.5876"?>
       <?rfc include="reference.RFC.6120"?>
       <?rfc include="reference.RFC.6121"?>
-      <?rfc include="reference.RFC.6189"?>
       <?rfc include="reference.RFC.6350"?>
       <reference anchor="XEP-0045">
         <front>
