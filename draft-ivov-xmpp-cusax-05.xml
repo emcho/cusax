@@ -234,8 +234,10 @@ signaling  \         /   presence, etc.
         able to continue to function properly and use the complete 
         feature set of standalone SIP and XMPP accounts. 
       </t>
+    </section>
+    <section title='Operation'>
       <t>
-        Once client bootstrap has completed, clients need to log in
+        Once client bootstrap has completed, a client need to log in
         independently to the SIP and XMPP accounts that make up the 
         CUSAX "service" and then maintain both these connections. In 
         order to improve user experience, when reporting connection 
@@ -249,10 +251,14 @@ signaling  \         /   presence, etc.
         understand why they are being shown two different connections 
         for what they perceive as a single service. It could alleviate 
         especially situations where one of these connections is 
-        disrupted while the other one is still active.
+        disrupted while the other one is still active. Naturally, the
+        developers of a CUSAX client or the providers of a CUSAX service
+        might decide to privilege one bundle of features (e.g., not 
+        showing the user as online if the XMPP account is connected but 
+        the SIP account has been disconnected), or to consider both 
+        aspects to be co-equal (e.g., not showing the user as online
+        if one of the accounts is offline).
       </t>
-    </section>
-    <section title='Operation'>
       <t>
         Once a CUSAX client has been provisioned/configured to connect
         to the corresponding SIP and XMPP services it would proceed by 
@@ -362,7 +368,14 @@ signaling  \         /   presence, etc.
         may also check for alternative communication methods as 
         advertised in XMPP presence broadcasts and Personal
         Eventing Protocol nodes as described in <xref target="XEP-0152">
-        XEP-0152: Reachability Addresses</xref>.
+        XEP-0152: Reachability Addresses</xref>.  However, these 
+        indications are merely hints, and a receiving client ought not
+        associate a SIP address and an XMPP address unless it has some
+        way to verify the association (e.g., the vCard of the XMPP 
+        account lists the SIP address and the vCard of the SIP account
+        lists the XMPP address).  Alternatively or in cases where vCard 
+        data is not available, a CUSAX client could take the user's own 
+        address book as the canonical source for contact addresses.
       </t>
       <t> 
         The client should use XMPP for all other forms of communication 
@@ -411,9 +424,10 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
         for text communication with the Message Session Relay Protocol
         (MSRP). However, given that SIP's instant messaging capabilities
         would normally be disabled (or simply not supported) in CUSAX
-        deployments, an XMPP Multi-User chat associated with the
-        conference can be announced/discovered through
-        &lt;service-uris&gt; bearing the "grouptextchat" purpose.
+        deployments, an XMPP Multi-User Chat (MUC) <xref target='XEP-0045'/> 
+        associated with the conference can be announced/discovered through
+        &lt;service-uris&gt; bearing the "grouptextchat" purpose
+        <xref target='I-D.ivov-grouptextchat-purpose'/>.
       </t>
       <t>
         Once a CUSAX client joins the MUC associated with a particular
@@ -530,18 +544,31 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
   </middle>
   <back>
     <references title='Informative References'>
+<reference anchor='I-D.ivov-grouptextchat-purpose'>
+<front>
+<title>A Group Text Chat Purpose for Conference and Service URIs in the Session Initiation Protocol (SIP) Event Package for Conference State</title>
+<author initials='E' surname='Ivov' fullname='Emil Ivov'>
+    <organization />
+</author>
+<date month='April' day='23' year='2013' />
+<abstract><t>This document defines and registers a value of "grouptextchat" ("Group Text Chat") value for the URI &lt;purpose> element of SIP's Conference Event Package [RFC4575].</t></abstract>
+</front>
+<seriesInfo name='Internet-Draft' value='draft-ivov-grouptextchat-purpose-00' />
+<format type='TXT'
+        target='http://www.ietf.org/internet-drafts/draft-ivov-grouptextchat-purpose-00.txt' />
+</reference>
 <reference anchor='I-D.saintandre-impp-call-info'>
 <front>
 <title>Instant Messaging and Presence Purpose for the Call-Info Header in the Session Initiation Protocol (SIP)</title>
 <author initials='P' surname='Saint-Andre' fullname='Peter Saint-Andre'>
     <organization />
 </author>
-<date month='March' day='10' year='2013' />
+<date month='April' day='16' year='2013' />
 <abstract><t>This document defines and registers a value of "impp" ("instant messaging and presence protocol") for the "purpose" header field parameter of the Call-Info header field in the Session Initiation Protocol (SIP).</t></abstract>
 </front>
-<seriesInfo name='Internet-Draft' value='draft-saintandre-impp-call-info-00' />
+<seriesInfo name='Internet-Draft' value='draft-saintandre-impp-call-info-02' />
 <format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-00.txt' />
+        target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-02.txt' />
 </reference>
       <?rfc include="reference.RFC.3261"?>
       <?rfc include="reference.RFC.4353"?>
@@ -636,9 +663,10 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
       </t>
       <t>
         The authors would also like to thank the following persons for
-        their reviews and suggestions: Aaron M. Evans, Sébastien Couture,
+        their reviews and suggestions: Aaron Evans, Sébastien Couture,
         Olivier Crête, Kevin Gallagher, Adrian Georgescu, Saúl Ibarra 
-        Corretgé, Daniel Pocock, Travis Reitterd, and Gonzalo Salgueiro.
+        Corretgé, David Laban, Daniel Pocock, Travis Reitter, and Gonzalo 
+        Salgueiro.
       </t>
     </section>
   </back>
