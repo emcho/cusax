@@ -663,10 +663,10 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
       </t>
       <t>
         The authors would also like to thank the following persons for
-        their reviews and suggestions: Aaron Evans, Sébastien Couture,
-        Olivier Crête, Kevin Gallagher, Adrian Georgescu, Saúl Ibarra 
-        Corretgé, David Laban, Daniel Pocock, Travis Reitter, and Gonzalo 
-        Salgueiro.
+        their reviews and suggestions: Sébastien Couture, Richard Brady,
+        Olivier Crête, Aaron Evans, Kevin Gallagher, Adrian Georgescu,
+        Saúl Ibarra Corretgé, David Laban, Daniel Pocock, Gonzalo
+        Salgueiro and Travis Reitter.
       </t>
     </section>
   </back>
