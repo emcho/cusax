@@ -135,14 +135,13 @@
         themselves needing a set of features that are not offered by any 
         single-protocol solution but that separately exist in SIP and 
         XMPP products. The idea of seamlessly using both protocols 
-        together would hence often appeal to service providers.      
-      </t>
-      <t>
-        Most often the combined use of SIP and XMPP ("CUSAX") would 
-        employ SIP exclusively for audio, video, and telephony services 
-        and rely on XMPP for anything else varying from chat, contact 
-        list management, and presence to whiteboarding and exchanging 
-        files.
+        together would hence often appeal to service providers. Most 
+        often, such a service would employ SIP exclusively for audio, 
+        video, and telephony services and rely on XMPP for anything 
+        else varying from chat, contact list management, and presence to 
+        whiteboarding and exchanging files.  Because these services and
+        clients involve the combined use of SIP and XMPP, we label them
+        "CUSAX" for short.
       </t>
       <figure anchor='figure-1' title='Division of Responsibilities'>
         <artwork><![CDATA[
@@ -161,9 +160,9 @@ signaling  \         /   presence, etc.
       <t>
         This document explains how such hybrid offerings can be achieved 
         with a minimum of modifications to existing software while 
-        providing an optimal user experience. It tries to cover points 
-        such as server discovery, determining a SIP AOR while using 
-        XMPP and determining an XMPP Jabber Identifier ("JID") from
+        providing an optimal user experience. It covers 
+        server discovery, determining a SIP AOR while using 
+        XMPP, and determining an XMPP Jabber Identifier ("JID") from
         incoming SIP requests. Most of the text here pertains to client
         behavior but it also recommends certain server-side
         configurations.
@@ -183,9 +182,15 @@ signaling  \         /   presence, etc.
         service provider might choose SIP or XMPP for various features.
       </t>
       <t>
-        Finally, this document concentrates on use cases where the SIP
+        This document concentrates on use cases where the SIP
         services and XMPP services are controlled by one and the same
-        provider. Since this document is of an informational nature, it
+        provider, since that assumption greatly simplifies both 
+        client implementation and server-side deployment (e.g., a
+        single service provider can enforce common or coordinated
+        policies across both the SIP and XMPP aspects of a CUSAX 
+        service, which is not possible if a SIP service is offered
+        by one provider and an XMPP service is offered by another).
+        Since this document is of an informational nature, it
         is not unreasonable for clients to apply some of the guidelines
         here even in cases where there is no established relationship
         between the SIP and the XMPP services (for example, it is
@@ -194,16 +199,28 @@ signaling  \         /   presence, etc.
         However, the exact set of rules to follow in such cases is 
         left to application developers.
       </t>
+      <t>
+        Finally, this document makes a further simplifying assumption
+        by discussing only the use of a single client, not use of
+        and coordination among multiple endpoints controlled by the 
+        same user (e.g., user agents running simultaneously on a
+        laptop computer, tablet, and mobile phone).
+      </t>
     </section>
     <section title='Client Bootstrap'>
       <t>
         One of the main problems of using two distinct protocols when
         providing one service is the impact on usability. Email
         services, for example, have long been affected by the mixed use 
-        of SMTP for outgoing mail and POP3 or IMAP for incoming mail, 
-        making it rather complicated for inexperienced users to 
-        configure a mail client and start using it with a new service. 
-        As a result, Internet service providers often need to provide 
+        of SMTP for outgoing mail and POP3 or IMAP for incoming mail.
+        Although standard service discovery methods (such as the 
+        proper DNS records) make it possible for a user agent to 
+        locate the right host(s) at which to connect, they do not
+        provide the kind of detailed information that is needed to
+        actually configure the user agent for use with the service.
+        As a result, it is rather complicated for inexperienced users to 
+        configure a mail client and start using it with a new service, 
+        and Internet service providers often need to provide 
         configuration instructions for various mail clients. Client 
         developers and communication device manufacturers on the other
         hand often ship with a number of wizards that enable users to 
@@ -214,7 +231,8 @@ signaling  \         /   presence, etc.
       <t>
         While it should be possible for CUSAX users to manually 
         configure their separate SIP and XMPP accounts, dual-stack
-        SIP/XMPP clients ought to provide means of online provisioning.
+        SIP/XMPP clients ought to provide means of online provisioning,
+        typically by means of a web-based service at an HTTP URI.
         While the specifics of such mechanisms are outside the scope of
         this specification, they should make it possible for a service
         provider to remotely configure the clients based on minimal
@@ -237,13 +255,13 @@ signaling  \         /   presence, etc.
     </section>
     <section title='Operation'>
       <t>
-        Once client bootstrap has completed, a client need to log in
+        Once client bootstrap has completed, a client needs to log in
         independently to the SIP and XMPP accounts that make up the 
         CUSAX "service" and then maintain both these connections. In 
-        order to improve user experience, when reporting connection 
-        status clients may also wish to present the XMPP CUSAX
+        order to improve the user experience, when reporting connection 
+        status clients may also wish to present the XMPP 
         connection as an "instant messaging" or a "chat" account. 
-        Similarly they could also depict the SIP CUSAX connection as a
+        Similarly they could also depict the SIP connection as a
         "Voice and Video" or a "Telephony" connection. The exact naming
         is of course entirely up to implementers. The point is that, in
         cases where SIP and XMPP are components of a service offered by
@@ -353,8 +371,8 @@ signaling  \         /   presence, etc.
         provider).
       </t>
       <t>
-        If, on the other hand, no relationship has been configured
-        between the SIP and XMPP accounts of a CUSAX service and the
+        If, on the other hand, no relationship has been configured or
+        discovered between a SIP account and an XMPP account, and the
         client is aware of multiple telephony-capable accounts, it ought
         to present the user with the choice of reaching the contact
         through any of those accounts. This includes the source XMPP account 
@@ -373,9 +391,11 @@ signaling  \         /   presence, etc.
         associate a SIP address and an XMPP address unless it has some
         way to verify the association (e.g., the vCard of the XMPP 
         account lists the SIP address and the vCard of the SIP account
-        lists the XMPP address).  Alternatively or in cases where vCard 
-        data is not available, a CUSAX client could take the user's own 
-        address book as the canonical source for contact addresses.
+        lists the XMPP address, or the association is made explicit in
+        a record provided by a trusted directory).  Alternatively or in 
+        cases where vCard or directory data is not available, a CUSAX 
+        client could take the user's own address book as the canonical 
+        source for contact addresses.
       </t>
       <t> 
         The client should use XMPP for all other forms of communication 
@@ -665,8 +685,8 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
         The authors would also like to thank the following persons for
         their reviews and suggestions: Sébastien Couture, Richard Brady,
         Olivier Crête, Aaron Evans, Kevin Gallagher, Adrian Georgescu,
-        Saúl Ibarra Corretgé, David Laban, Daniel Pocock, Gonzalo
-        Salgueiro and Travis Reitter.
+        Saúl Ibarra Corretgé, David Laban, Murray Mar, Daniel Pocock, 
+        Travis Reitter, and Gonzalo Salgueiro.
       </t>
     </section>
   </back>
