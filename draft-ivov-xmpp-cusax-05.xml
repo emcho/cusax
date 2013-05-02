@@ -337,22 +337,25 @@ signaling  \         /   presence, etc.
       <t>  
         When rendering the roster for a particular XMPP account CUSAX
         clients should make sure that users are presented with a "Call"
-        option for each roster entry that has a properly set "tel" field
-        even if calling has been disabled for that particular XMPP
-        account. The usefulness of such a feature is not limited to
-        CUSAX. After all, numbers are entered in vCards in order to be
-        dialed and called. Hence, as long as an XMPP client is equipped
-        with accounts that have calling features it may wish to present
-        the user with the option of using these accounts to reach
-        numbers from an XMPP vCard. In order to improve usability, in
-        cases where clients are provisioned with only a single
-        telephony-capable account they ought to initiate calls
-        immediately upon user request without asking users to indicate
-        an account that the call should go through. This way CUSAX users
-        (whose only account with calling capabilities is usually the
-        SIP part of their service) would have a better experience, since
-        from the user's perspective calls "just work at the click of
-        a button".
+        option for each roster entry that has a properly set "tel"
+        field. This has to be the case even if calling features have
+        been disabled for that particular XMPP account, as advised by
+        this document. The usefulness of such a feature is not limited
+        to CUSAX. After all, numbers are entered in vCards in order to
+        be dialed and called. Hence, as long as an XMPP client has any
+        means of conducting a call it may wish to make it possible for
+        the user to easily dial any numbers that it learned through
+        whatever means.
+      </t>
+      <t>
+        Also, in order to improve usability, in cases where clients are
+        provisioned with only a single telephony-capable account they
+        ought to initiate calls immediately upon user request without
+        asking users to indicate an account that the call should go
+        through. This way CUSAX users (whose only account with calling
+        capabilities is usually the SIP part of their service) would
+        have a better experience, since from the user's perspective
+        calls "just work at the click of a button".
       </t>
       <t>
         In order to provide a similar experience when the user has
@@ -685,7 +688,7 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
         The authors would also like to thank the following persons for
         their reviews and suggestions: Sébastien Couture, Richard Brady,
         Olivier Crête, Aaron Evans, Kevin Gallagher, Adrian Georgescu,
-        Saúl Ibarra Corretgé, David Laban, Murray Mar, Daniel Pocock, 
+        Saúl Ibarra Corretgé, David Laban, Murray Mar, Daniel Pocock,
         Travis Reitter, and Gonzalo Salgueiro.
       </t>
     </section>
