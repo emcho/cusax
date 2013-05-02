@@ -299,7 +299,7 @@ signaling  \         /   presence, etc.
         CUSAX service.
       </t>
       <t>
-        Additionally, clients that have separete triggers (buttons) for
+        Additionally, clients that have separate triggers (buttons) for
         audio and video calls may choose to use the presence or absence
         of the "video" tel type defined in <xref target="RFC6350"/> and
         enable or disable the possibility for starting video calls
