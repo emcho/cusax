@@ -271,11 +271,16 @@ signaling  \         /   presence, etc.
         especially situations where one of these connections is 
         disrupted while the other one is still active. Naturally, the
         developers of a CUSAX client or the providers of a CUSAX service
-        might decide to privilege one bundle of features (e.g., not 
-        showing the user as online if the XMPP account is connected but 
-        the SIP account has been disconnected), or to consider both 
-        aspects to be co-equal (e.g., not showing the user as online
-        if one of the accounts is offline).
+        might decide not to accept such situations and force a client
+        to completely disconnect unless both aspects are successfully
+        connected.
+      </t>
+      <t>
+        Clients may also choose to delay their XMPP connection until
+        they have been successfully registered on SIP. This would help
+        avoid the situation where a user appears online to its contacts
+        but calling it would fail because their clients is still
+        connecting to the SIP aspect of their CUSAX service.
       </t>
       <t>
         Once a CUSAX client has been provisioned/configured to connect
