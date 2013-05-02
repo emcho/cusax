@@ -500,57 +500,51 @@ Call-Info: <xmpp:alice@example.com> ;purpose=impp
         worth noting that differences in administration policies may
         sometimes lead to potentially confusing user experiences.
       </t>
-      <section title='The Common Case'>
-        <t>
-          For example, let's say atlanta.example.com observes the CUSAX
-          policies described in this specification. All XMPP users at
-          atlanta.example.com are hence configured to have vCards that
-          match their SIP identities. Alice is therefore used to making
-          free, high-quality SIP calls to all the people in her roster.
-          Alice can also make calls to the PSTN by simply dialing
-          numbers. She may even be used to these calls being billed to
-          her online account so she would careful about how long they
-          last. This is not a problem for her since she can easily
-          distinguish between a free SIP call (one that she made by
-          calling one her roster entries) from a paid PSTN call that she
-          dialed as a number.
-        </t>
-      </section>
-      <section title='The CUSAX Federation Confusion'>
-        <t>
-          Then Alice adds xmpp:bob@biloxi.example.com. The Biloxi domain
-          only has an XMPP service. There is no SIP server and Bob uses
-          a regular, XMPP-only client. Bob has however added his mobile
-          number to his vCard in order to make it easily accessible to
-          his contacts. Alice's client would pick up this number and
-          make it possible for Alice to start a call to Bob's mobile
-          phone number.
-        </t>
-        <t>
-          This could be a problem because, other than the fact that
-          Bob's address is from a different domain, Alice would have no
-          obvious and straightforward cues telling her that this is in
-          fact a call to the PSTN. In addition to the potentially lower
-          audio quality, Alice may also end up incurring unexpected
-          charges for such calls.
-        </t>
-      </section>
-      <section title='The Recommendation'>
-        <t>
-          In order to avoid such issues, providers maintaining a CUSAX
-          service for the users in their domain may choose to provide
-          additional cues (e.g., a user interface warning or an an audio
-          tone or message) indicating that a call would incur charges.
-        </t>
-        <t>
-          A slightly less disturbing scenario, where a SIP service might
-          only allow communication with intra-domain numbers, would
-          simply prevent Alice from establishing a call with Bob's
-          mobile. Providers should hence make sure that calls to
-          extra-domain numbers are flagged with an appropriate audio or
-          textual warning.
-        </t>
-      </section>
+      <t>
+        For example, let's say atlanta.example.com observes the CUSAX
+        policies described in this specification. All XMPP users at
+        atlanta.example.com are hence configured to have vCards that
+        match their SIP identities. Alice is therefore used to making
+        free, high-quality SIP calls to all the people in her roster.
+        Alice can also make calls to the PSTN by simply dialing
+        numbers. She may even be used to these calls being billed to
+        her online account so she would careful about how long they
+        last. This is not a problem for her since she can easily
+        distinguish between a free SIP call (one that she made by
+        calling one her roster entries) from a paid PSTN call that she
+        dialed as a number.
+      </t>
+      <t>
+        Then Alice adds xmpp:bob@biloxi.example.com. The Biloxi domain
+        only has an XMPP service. There is no SIP server and Bob uses
+        a regular, XMPP-only client. Bob has however added his mobile
+        number to his vCard in order to make it easily accessible to
+        his contacts. Alice's client would pick up this number and
+        make it possible for Alice to start a call to Bob's mobile
+        phone number.
+      </t>
+      <t>
+        This could be a problem because, other than the fact that
+        Bob's address is from a different domain, Alice would have no
+        obvious and straightforward cues telling her that this is in
+        fact a call to the PSTN. In addition to the potentially lower
+        audio quality, Alice may also end up incurring unexpected
+        charges for such calls.
+      </t>
+      <t>
+        In order to avoid such issues, providers maintaining a CUSAX
+        service for the users in their domain may choose to provide
+        additional cues (e.g., a user interface warning or an an audio
+        tone or message) indicating that a call would incur charges.
+      </t>
+      <t>
+        A slightly less disturbing scenario, where a SIP service might
+        only allow communication with intra-domain numbers, would
+        simply prevent Alice from establishing a call with Bob's
+        mobile. Providers should hence make sure that calls to
+        extra-domain numbers are flagged with an appropriate audio or
+        textual warning.
+      </t>
     </section>
     <section title='Security Considerations'>
       <t>
