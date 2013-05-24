@@ -239,12 +239,12 @@ signaling  \         /   presence, etc.
         user input (e.g., only a user ID and password).
       </t>
       <t>
-        Because many of the features that a CUSAX client would privilege 
+        Because many of the features that a CUSAX client would prefer
         in one protocol would also be available in the other, clients 
         should make it possible for such features to be disabled for a 
         specific account. In particular, it is suggested that clients
-        allow for audio and video calling features to be disabled for XMPP
-        accounts, and that instant messaging and presence features 
+        allow for audio and video calling features to be disabled for
+        XMPP accounts, and that instant messaging and presence features
         should also be made optional for SIP accounts.
       </t>
       <t>
@@ -551,7 +551,7 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         free, high-quality SIP calls to all the people in her roster.
         Alice can also make calls to the PSTN by simply dialing
         numbers. She may even be used to these calls being billed to
-        her online account so she would careful about how long they
+        her online account so she would be careful about how long they
         last. This is not a problem for her since she can easily
         distinguish between a free SIP call (one that she made by
         calling one her roster entries) from a paid PSTN call that she
@@ -585,7 +585,7 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         only allow communication with intra-domain numbers, would
         simply prevent Alice from establishing a call with Bob's
         mobile. Providers should hence make sure that calls to
-        extra-domain numbers are flagged with an appropriate audio or
+        inter-domain numbers are flagged with an appropriate audio or
         textual warning.
       </t>
     </section>
