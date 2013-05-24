@@ -821,10 +821,11 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       </t>
       <t>
         The authors would also like to thank the following persons for
-        their reviews and suggestions: Sébastien Couture, Richard Brady,
-        Olivier Crête, Aaron Evans, Kevin Gallagher, Adrian Georgescu,
-        Saúl Ibarra Corretgé, David Laban, Murray Mar, Daniel Pocock,
-        Travis Reitter, and Gonzalo Salgueiro.
+        their reviews and suggestions: Sébastien Couture, Dan-Christian
+        Bogos, Richard Brady, Olivier Crête, Aaron Evans, Kevin
+        Gallagher, Adrian Georgescu, Saúl Ibarra Corretgé, David Laban,
+        Murray Mar, Daniel Pocock, Travis Reitter, and Gonzalo
+        Salgueiro.
       </t>
     </section>
   </back>
