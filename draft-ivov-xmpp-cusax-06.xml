@@ -611,24 +611,25 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <t>The following practices are suggested for CUSAX user agents:</t>
       <t>
         <list style='numbers'>
-          <t>Make it possible for users to disable features for an account associated with a given protocol (SIP or XMPP) if the features are preferred in another protocol (XMPP or SIP).</t>
-          <t>Optionally, present the XMPP connection as an "instant messaging" or a "chat" account and the SIP connection as a "Voice and Video" or a "Telephony" acccount.</t>.
-          <t>Optionally, delay the XMPP connection until after a SIP connection has been successfully registered.</t>
-          <t>Use XMPP for all forms of communication with the contacts from the XMPP roster, with the exception of features that available only via SIP.</t>
-          <t>Presented a "Call" option for each roster entry that has a properly set "tel" field.</t>
-          <t>Optionally, check for alternative XMPP communication methods.</t>
+          <t>By default, prefer SIP for audio and video, and XMPP for messaging and presence.</t>
+          <t>Use XMPP for all forms of communication with the contacts from the XMPP roster, with the exception of features that are available only via SIP.</t>
+          <t>Make it possible for users to completely disable features for an account associated with a given protocol (SIP or XMPP) if the features are preferred in another protocol (XMPP or SIP).</t>
+          <t>Present a "Call" option for each roster entry that has a properly set "tel" field.</t>
           <t>If the client is provisioned with only a single telephony-capable account, initiate calls immediately upon user request without asking users to indicate an account that the call should go through.</t>
-          <t>Optionally, indicate the existence of a special relationship between the SIP and XMPP accounts of a CUSAX service.</t>
           <t>If no relationship has been configured or discovered between a SIP account and an XMPP account, and the client is aware of multiple telephony-capable accounts, present the user with the choice of reaching the contact through any of those accounts.</t>
-          <t>Optionally, determine the identity of the caller and a corresponding XMPP roster entry so that users could revert to chatting or other forms of communication that require XMPP.</t>
+          <t>Optionally, indicate the existence of a special relationship between the SIP and XMPP accounts of a CUSAX service.</t>
+          <t>Optionally, present the XMPP connection as an "instant messaging" or a "chat" account and the SIP connection as a "Voice and Video" or a "Telephony" acccount.</t>.
+          <t>Optionally, determine the identity of the audio/video caller and a corresponding XMPP roster entry so that the user could revert to textual chatting or other forms of communication that require XMPP.</t>
+          <t>Optionally, delay the XMPP connection until after a SIP connection has been successfully registered.</t>
+          <t>Optionally, check for alternative XMPP communication methods.</t>
         </list>
       </t>
       <t>The following practices are suggested for CUSAX services:</t>
       <t>
         <list style='numbers'>
           <t>Provide a method for online provisioning and configuration of accounts.</t>
-          <t>Sure that at least one of the vCard [RFC6350] "tel" fields for each contact is properly populated with a SIP URI or a phone number.</t>
-          <t>Optionally, include the "video" tel type defined in for accounts that would be capable of handling video communication.</t>
+          <t>Ensure that at least one of the vCard "tel" fields for each contact is properly populated with a SIP URI or a phone number.</t>
+          <t>Optionally, include the "video" tel type for accounts that are capable of handling video communication.</t>
         </list>
       </t>
     </section>
