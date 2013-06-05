@@ -671,8 +671,9 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
             connection has been successfully registered.
           </t>
           <t>
-            Optionally, check for alternative XMPP communication
-            methods.
+            Optionally, check for alternative communication methods
+            (SIP addresses advertised over XMPP, and XMPP addresses
+            advertised over SIP).
           </t>
         </list>
       </t>
@@ -699,13 +700,14 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
           </t>
           <t>
             Optionally, provision clients with information indicating
-            that a specific SIP and XMPP clients are related in a CUSAX
+            that specific SIP and XMPP accounts are related in a CUSAX
             service.
           </t>
           <t>
-            Optionally, attach a "Call-Info" header to all your SIP
-            INVITE-s, so that clients can more rapidly associate it a
-            caller with a roster entry and display a "Caller ID".
+            Optionally, attach a "Call-Info" header with an "impp" 
+            purpose to all your SIP INVITE messages, so that clients 
+            can more rapidly associate a caller with a roster entry 
+            and display a "Caller ID".
           </t>
         </list>
       </t>
