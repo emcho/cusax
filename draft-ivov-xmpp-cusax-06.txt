@@ -5,10 +5,10 @@
 Network Working Group                                            E. Ivov
 Internet-Draft                                                     Jitsi
 Intended status: Informational                            P. Saint-Andre
-Expires: December 07, 2013                           Cisco Systems, Inc.
+Expires: December 08, 2013                           Cisco Systems, Inc.
                                                               E. Marocco
                                                           Telecom Italia
-                                                           June 05, 2013
+                                                           June 06, 2013
 
 
   CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 07, 2013.
+   This Internet-Draft will expire on December 08, 2013.
 
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 1]
+Ivov, et al.            Expires December 08, 2013               [Page 1]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -87,7 +87,7 @@ Table of Contents
    6.  Summary of Suggested Practices  . . . . . . . . . . . . . . .  11
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
-   9.  Informative References  . . . . . . . . . . . . . . . . . . .  13
+   9.  Informative References  . . . . . . . . . . . . . . . . . . .  14
    Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 2]
+Ivov, et al.            Expires December 08, 2013               [Page 2]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -165,7 +165,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 3]
+Ivov, et al.            Expires December 08, 2013               [Page 3]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -221,7 +221,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 4]
+Ivov, et al.            Expires December 08, 2013               [Page 4]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -277,7 +277,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 5]
+Ivov, et al.            Expires December 08, 2013               [Page 5]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -333,7 +333,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 6]
+Ivov, et al.            Expires December 08, 2013               [Page 6]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -389,7 +389,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 7]
+Ivov, et al.            Expires December 08, 2013               [Page 7]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -445,7 +445,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 8]
+Ivov, et al.            Expires December 08, 2013               [Page 8]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -501,7 +501,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013               [Page 9]
+Ivov, et al.            Expires December 08, 2013               [Page 9]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -557,7 +557,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013              [Page 10]
+Ivov, et al.            Expires December 08, 2013              [Page 10]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -613,7 +613,7 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-Ivov, et al.            Expires December 07, 2013              [Page 11]
+Ivov, et al.            Expires December 08, 2013              [Page 11]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
@@ -660,19 +660,22 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
    11.  Optionally, delay the XMPP connection until after a SIP
         connection has been successfully registered.
 
-   12.  Optionally, check for alternative XMPP communication methods.
+   12.  Optionally, check for alternative communication methods (SIP
+        addresses advertised over XMPP, and XMPP addresses advertised
+        over SIP).
 
    The following practices are suggested for CUSAX services:
 
-   1.  Use online provisioning and configuration of accounts so that
-       users won't need to setup two separate accounts for your service.
 
 
 
-Ivov, et al.            Expires December 07, 2013              [Page 12]
+Ivov, et al.            Expires December 08, 2013              [Page 12]
 
 Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
+
+   1.  Use online provisioning and configuration of accounts so that
+       users won't need to setup two separate accounts for your service.
 
    2.  Use online provisioning so that calling features are disabled for
        all XMPP accounts.
@@ -684,12 +687,12 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
    4.  Optionally, include the "video" tel type for accounts that are
        capable of handling video communication.
 
-   5.  Optionally, provision clients with information indicating that a
-       specific SIP and XMPP clients are related in a CUSAX service.
+   5.  Optionally, provision clients with information indicating that
+       specific SIP and XMPP accounts are related in a CUSAX service.
 
-   6.  Optionally, attach a "Call-Info" header to all your SIP INVITE-s,
-       so that clients can more rapidly associate it a caller with a
-       roster entry and display a "Caller ID".
+   6.  Optionally, attach a "Call-Info" header with an "impp" purpose to
+       all your SIP INVITE messages, so that clients can more rapidly
+       associate a caller with a roster entry and display a "Caller ID".
 
 7.  Security Considerations
 
@@ -714,6 +717,19 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
    This document has no actions for the IANA.
 
+
+
+
+
+
+
+
+
+Ivov, et al.            Expires December 08, 2013              [Page 13]
+
+Internet-Draft        Combined Use of SIP and XMPP             June 2013
+
+
 9.  Informative References
 
    [I-D.ivov-grouptextchat-purpose]
@@ -721,14 +737,6 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
               Service URIs in the Session Initiation Protocol (SIP)
               Event Package for Conference State ", draft-ivov-
               grouptextchat-purpose-01 (work in progress), May 2013.
-
-
-
-
-Ivov, et al.            Expires December 07, 2013              [Page 13]
-
-Internet-Draft        Combined Use of SIP and XMPP             June 2013
-
 
    [I-D.saintandre-impp-call-info]
               Saint-Andre, P., "Instant Messaging and Presence Purpose
@@ -769,6 +777,15 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
               Protocol (XMPP): Instant Messaging and Presence", RFC
               6121, March 2011.
 
+
+
+
+
+Ivov, et al.            Expires December 08, 2013              [Page 14]
+
+Internet-Draft        Combined Use of SIP and XMPP             June 2013
+
+
    [RFC6350]  Perreault, S., "vCard Format Specification", RFC 6350,
               August 2011.
 
@@ -777,15 +794,6 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
               P. Saint-Andre, "Data Forms", XSF XEP 0004, August 2007.
 
    [XEP-0030]
-
-
-
-
-Ivov, et al.            Expires December 07, 2013              [Page 14]
-
-Internet-Draft        Combined Use of SIP and XMPP             June 2013
-
-
               Hildebrand, J., Millard, P., Eatmon, R., and P. Saint-
               Andre, "Service Discovery", XSF XEP 0030, June 2008.
 
@@ -822,6 +830,18 @@ Appendix A.  Acknowledgements
 
 Authors' Addresses
 
+
+
+
+
+
+
+
+Ivov, et al.            Expires December 08, 2013              [Page 15]
+
+Internet-Draft        Combined Use of SIP and XMPP             June 2013
+
+
    Emil Ivov
    Jitsi
    Strasbourg  67000
@@ -829,17 +849,6 @@ Authors' Addresses
 
    Phone: +33-177-624-330
    Email: emcho@jitsi.org
-
-
-
-
-
-
-
-
-Ivov, et al.            Expires December 07, 2013              [Page 15]
-
-Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
    Peter Saint-Andre
@@ -884,13 +893,4 @@ Internet-Draft        Combined Use of SIP and XMPP             June 2013
 
 
 
-
-
-
-
-
-
-
-
-
-Ivov, et al.            Expires December 07, 2013              [Page 16]
+Ivov, et al.            Expires December 08, 2013              [Page 16]
