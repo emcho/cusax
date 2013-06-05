@@ -608,28 +608,105 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       </t>
     </section>
     <section title='Summary of Suggested Practices'>
-      <t>The following practices are suggested for CUSAX user agents:</t>
+      <t>
+        The following practices are suggested for CUSAX user agents:
+      </t>
       <t>
         <list style='numbers'>
-          <t>By default, prefer SIP for audio and video, and XMPP for messaging and presence.</t>
-          <t>Use XMPP for all forms of communication with the contacts from the XMPP roster, with the exception of features that are available only via SIP.</t>
-          <t>Make it possible for users to completely disable features for an account associated with a given protocol (SIP or XMPP) if the features are preferred in another protocol (XMPP or SIP).</t>
-          <t>Present a "Call" option for each roster entry that has a properly set "tel" field.</t>
-          <t>If the client is provisioned with only a single telephony-capable account, initiate calls immediately upon user request without asking users to indicate an account that the call should go through.</t>
-          <t>If no relationship has been configured or discovered between a SIP account and an XMPP account, and the client is aware of multiple telephony-capable accounts, present the user with the choice of reaching the contact through any of those accounts.</t>
-          <t>Optionally, indicate the existence of a special relationship between the SIP and XMPP accounts of a CUSAX service.</t>
-          <t>Optionally, present the XMPP connection as an "instant messaging" or a "chat" account and the SIP connection as a "Voice and Video" or a "Telephony" acccount.</t>.
-          <t>Optionally, determine the identity of the audio/video caller and a corresponding XMPP roster entry so that the user could revert to textual chatting or other forms of communication that require XMPP.</t>
-          <t>Optionally, delay the XMPP connection until after a SIP connection has been successfully registered.</t>
-          <t>Optionally, check for alternative XMPP communication methods.</t>
+          <t>
+            By default, prefer SIP for audio and video, and XMPP for
+            messaging and presence.
+          </t>
+          <t>
+            Use XMPP for all forms of communication with the contacts
+            from the XMPP roster, with the exception of features that
+            are based on establishing real-time sessions (e.g.
+            audio/video calls) in which case use SIP.
+          </t>
+          <t>
+            Provide on-line provisioning options for providers to
+            remotely setup SIP and XMPP accounts so that users wouldn't
+            need to go through a multi-step configuration process.
+          </t>
+          <t>
+            Provide on-line provisioning options for providers to
+            completely disable features for an account associated with a
+            given protocol (SIP or XMPP) if the features are preferred
+            in another protocol (XMPP or SIP).
+          </t>
+          <t>
+            Present a "Call" option for each roster entry that has a
+            properly set "tel" field.
+          </t>
+          <t>
+            If the client is provisioned with only a single
+            telephony-capable account, initiate calls immediately upon
+            user request without asking users to indicate an account
+            that the call should go through.
+          </t>
+          <t>
+            If no relationship has been configured or discovered between
+            a SIP account and an XMPP account, and the client is aware
+            of multiple telephony-capable accounts, present the user
+            with the choice of reaching the contact through any of those
+            accounts.
+          </t>
+          <t>
+            Optionally, indicate the existence of a special relationship
+            between the SIP and XMPP accounts of a CUSAX service.
+          </t>
+          <t>
+            Optionally, present the XMPP connection as an "instant
+            messaging" or a "chat" account and the SIP connection as a
+            "Voice and Video" or a "Telephony" acccount.
+          </t>
+          <t>
+            Optionally, determine the identity of the audio/video caller
+            and a corresponding XMPP roster entry so that the user could
+            revert to textual chatting or other forms of communication
+            that require XMPP.
+          </t>
+          <t>
+            Optionally, delay the XMPP connection until after a SIP
+            connection has been successfully registered.
+          </t>
+          <t>
+            Optionally, check for alternative XMPP communication
+            methods.
+          </t>
         </list>
       </t>
       <t>The following practices are suggested for CUSAX services:</t>
       <t>
         <list style='numbers'>
-          <t>Provide a method for online provisioning and configuration of accounts.</t>
-          <t>Ensure that at least one of the vCard "tel" fields for each contact is properly populated with a SIP URI or a phone number.</t>
-          <t>Optionally, include the "video" tel type for accounts that are capable of handling video communication.</t>
+          <t>
+            Use online provisioning and configuration of accounts so
+            that users won't need to setup two separate accounts for
+            your service.
+          </t>
+          <t>
+            Use online provisioning so that calling features are
+            disabled for all XMPP accounts.
+          </t>
+          <t>
+            Ensure that at least one of the vCard "tel" fields for each
+            XMPP user is properly populated with a SIP URI or a phone
+            number that are reachable through your SIP service.
+          </t>
+          <t>
+            Optionally, include the "video" tel type for accounts that
+            are capable of handling video communication.
+          </t>
+          <t>
+            Optionally, provision clients with information indicating
+            that a specific SIP and XMPP clients are related in a CUSAX
+            service.
+          </t>
+          <t>
+            Optionally, attach a "Call-Info" header to all your SIP
+            INVITE-s, so that clients can more rapidly associate it a
+            caller with a roster entry and display a "Caller ID".
+          </t>
         </list>
       </t>
     </section>
@@ -662,32 +739,58 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
   </middle>
   <back>
     <references title='Informative References'>
-<reference anchor='I-D.ivov-grouptextchat-purpose'>
-<front>
-<title>A Group Text Chat Purpose for Conference and Service URIs in the Session Initiation Protocol (SIP) Event Package for Conference State</title>
-<author initials='E' surname='Ivov' fullname='Emil Ivov'>
-    <organization />
-</author>
-<date month='May' day='28' year='2013' />
-<abstract><t>This document defines and registers a value of "grouptextchat" ("Group Text Chat") value for the URI &lt;purpose> element of SIP's Conference Event Package [RFC4575].</t></abstract>
-</front>
-<seriesInfo name='Internet-Draft' value='draft-ivov-grouptextchat-purpose-01' />
-<format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-ivov-grouptextchat-purpose-01.txt' />
-</reference>
-<reference anchor='I-D.saintandre-impp-call-info'>
-<front>
-<title>Instant Messaging and Presence Purpose for the Call-Info Header in the Session Initiation Protocol (SIP)</title>
-<author initials='P' surname='Saint-Andre' fullname='Peter Saint-Andre'>
-    <organization />
-</author>
-<date month='May' day='30' year='2013' />
-<abstract><t>This document defines and registers a value of "impp" ("instant messaging and presence protocol") for the "purpose" header field parameter of the Call-Info header field in the Session Initiation Protocol (SIP).</t></abstract>
-</front>
-<seriesInfo name='Internet-Draft' value='draft-saintandre-impp-call-info-04' />
-<format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-04.txt' />
-</reference>
+      <reference anchor='I-D.ivov-grouptextchat-purpose'>
+        <front>
+          <title>
+            A Group Text Chat Purpose for Conference and Service URIs in
+            the Session
+            Initiation Protocol (SIP) Event Package for Conference State
+          </title>
+          <author initials='E' surname='Ivov' fullname='Emil Ivov'>
+            <organization/>
+          </author>
+          <date month='May' day='28' year='2013'/>
+          <abstract>
+            <t>
+              This document defines and registers a value of
+              "grouptextchat"
+              ("Group Text Chat") value for the URI &lt;purpose> element
+              of
+              SIP's Conference Event Package [RFC4575].
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name='Internet-Draft'
+                    value='draft-ivov-grouptextchat-purpose-01'/>
+        <format type='TXT'
+                target='http://www.ietf.org/internet-drafts/draft-ivov-grouptextchat-purpose-01.txt'/>
+      </reference>
+      <reference anchor='I-D.saintandre-impp-call-info'>
+        <front>
+          <title>Instant Messaging and Presence Purpose for the
+            Call-Info
+            Header in the Session Initiation Protocol (SIP)
+          </title>
+          <author initials='P' surname='Saint-Andre'
+                  fullname='Peter Saint-Andre'>
+            <organization/>
+          </author>
+          <date month='May' day='30' year='2013'/>
+          <abstract>
+            <t>
+              This document defines and registers a value of "impp"
+              ("instant
+              messaging and presence protocol") for the "purpose" header
+              field
+              parameter of the Call-Info header field in the Session
+              Initiation Protocol (SIP).
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name='Internet-Draft' value='draft-saintandre-impp-call-info-04'/>
+        <format type='TXT'
+                target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-04.txt'/>
+      </reference>
       <?rfc include="reference.RFC.3261"?>
       <?rfc include="reference.RFC.4353"?>
       <?rfc include="reference.RFC.4575"?>
