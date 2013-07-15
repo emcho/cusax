@@ -102,20 +102,21 @@
       <t>
         <list style='symbols'>
           <t>
-        Today, in the context of the SIMPLE working group, the IETF has 
-        defined a number of protocols and protocol extensions that not
-        only allow for SIP to be used for regular instant messaging and
-        presence but that also provide mechanisms for elaborated 
-        features such as multi-user chats, server-stored contact lists,
-        file transfer and others.
+            In the context of the SIMPLE working group, the IETF has
+            defined a number of protocols and protocol extensions that
+            not only allow for SIP to be used for regular instant
+            messaging and presence but that also provide mechanisms for
+            elaborated features such as multi-user chats, server-stored
+            contact lists, file transfer and others.
           </t>
           <t>
-        Similarly, the XMPP community and the XMPP Standards Foundation
-        have worked on defining a number of XMPP Extension Protocols
-        (XEPs) that provide XMPP implementations with the means of 
-        establishing end-to-end sessions. These extensions are often 
-        jointly referred to as Jingle and arguably their most popular
-        use case is audio and video calling.
+            Similarly, the XMPP community and the XMPP Standards
+            Foundation have worked on defining a number of XMPP
+            Extension Protocols (XEPs) that provide XMPP implementations
+            with the means of establishing end-to-end sessions. These
+            extensions are often jointly referred to as Jingle and
+            arguably their most popular use case is audio and video
+            calling.
           </t>
         </list>
       </t>
@@ -567,7 +568,7 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         multi-user chats in conference calling.
       </t>
     </section>
-    <section title='Federation'>
+    <section title='Federation' anchor="federation">
       <t>
         In theory there are no technical reasons why federation would
         require special behavior from CUSAX clients. However, it is
@@ -743,7 +744,16 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         that such mismatches are avoided as much as possible.
       </t>
       <t>
-        Refer to the specifications for the relevant SIP and XMPP 
+        <xref target="federation"/>, discusses potential issues that may
+        arise due to a mismatch between client capabilities, such as
+        calls being initiated with costs contrary to the expectation of
+        the end user. Such issues could be triggered maliciously,
+        as well as by accident. Implementers will therefore need to
+        provide necessary cues to raise user awareness as suggested in
+        <xref target="federation"/>.
+      </t>
+      <t>
+        Refer to the specifications for the relevant SIP and XMPP
         features for detailed security considerations applying to 
         each "stack" in a CUSAX client.
       </t>
@@ -816,6 +826,8 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <?rfc include="reference.RFC.6120"?>
       <?rfc include="reference.RFC.6121"?>
       <?rfc include="reference.RFC.6350"?>
+      <?rfc include="reference.I-D.ietf-appsawg-webfinger"?>
+
       <reference anchor="XEP-0004">
         <front>
           <title>Data Forms</title>
@@ -984,10 +996,10 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <t>
         The authors would also like to thank the following people for
         their reviews and suggestions: Sébastien Couture, Dan-Christian
-        Bogos, Richard Brady, Olivier Crête, Aaron Evans, Kevin
-        Gallagher, Adrian Georgescu, Saúl Ibarra Corretgé, David Laban,
-        Gergely Lukacsy, Murray Mar, Daniel Pocock, Travis Reitter, and 
-        Gonzalo Salgueiro.
+        Bogos, Richard Brady, Olivier Crête, Aaron Evans, Ted Hardie,
+        Kevin Gallagher, Adrian Georgescu, Saúl Ibarra Corretgé, David
+        Laban, Gergely Lukacsy, Murray Mar, Daniel Pocock, Travis
+        Reitter, and Gonzalo Salgueiro.
       </t>
       <t>
         Brian Carpenter reviewed the document on behalf of the General
