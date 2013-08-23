@@ -167,7 +167,11 @@ signaling  \         /   presence, etc.
         XMPP, and determining an XMPP Jabber Identifier ("JID") from
         incoming SIP requests. Most of the text here pertains to client
         behavior but it also recommends certain server-side
-        configurations.
+        configurations and operational practices.  The document also 
+        discusses significant security considerations that can arise
+        when offering a dual-protocol solution, and provides advice
+        for avoiding security mismatches that would result in 
+        degraded communications security for end users.
       </t>
       <t>
         Note that this document is focused on coexistence of SIP and 
@@ -249,12 +253,12 @@ signaling  \         /   presence, etc.
         offer online provisioning as well, but they can be especially 
         helpful where the two aspects of the CUSAX service need to 
         have several configuration options in common).
-        While the specifics of such mechanisms are outside the scope of
+        Although the specifics of such mechanisms are outside the scope of
         this specification, they should make it possible for a service
         provider to remotely configure the clients based on minimal
         user input (e.g., only a user ID and password).  As far as the 
         authors are aware, no open protocol for endpoint configuration
-        is yet available and adopted, but application developers are
+        is yet available and adopted; however, application developers are
         encouraged to explore the potential for future progress in
         that space (e.g., perhaps based on technologies such as 
         WebFinger <xref target='I-D.ietf-appsawg-webfinger'/>).
@@ -379,6 +383,49 @@ signaling  \         /   presence, etc.
           <xref target="figure-sample-deployment"/>).
         </t>
       </section>
+      <section title='Service Management'>
+        <t>
+          The task of operating and managing a SIP service or an XMPP
+          service is not always easy.  Combining the two into a unified
+          service introduces additional challenges, including:
+        </t>
+        <t>
+          <list style='symbols'>
+            <t>
+              The necessity of opening additional ports on the client 
+              side if SIP functionality is added to an existing XMPP
+              deployment or vice-versa.
+            </t>
+            <t>
+              The potential for subtle differences in security posture
+              across SIP and XMPP (e.g., SIP servers and XMPP servers 
+              might support different TLS ciphersuites).
+            </t>
+            <t>
+              The need for, ideally, a common authentication backend and
+              other infrastructure that is shared across the SIP and XMPP
+              aspects of the combined service.
+            </t>
+            <t>
+              Coordinated monitoring and logging of the SIP and XMPP 
+              servers to enable the correlation of incidents and the
+              pinpointing of problems.
+            </t>
+            <t>
+              The difficulty of troubleshooting client-side issues, e.g. 
+              if the client loses connectivity for XMPP but maintains 
+              its SIP connection.
+            </t>
+          </list>
+        </t>
+        <t>
+          Although separation of functionality (SIP for media, XMPP for
+          IM and presence) can help to ease the operational burden to 
+          some extent, service providers are urged to address the
+          foregoing challenges and similar issues when preparing to 
+          launch a CUSAX service.
+        </t>
+      </section>
       <section title='Client-Side Discovery and Usability'>
         <t>
           When rendering the roster for a particular XMPP account CUSAX
@@ -483,7 +530,7 @@ signaling  \         /   presence, etc.
           entire roster and retrieving all vCards, CUSAX clients may use
           a SIP Call-Info header whose 'purpose' header field parameter
           has a value of "impp" as described in
-          <xref target='I-D.saintandre-impp-call-info'/>. An example
+          <xref target='RFC6993'/>. An example
           follows.
           <figure>
             <artwork><![CDATA[
@@ -730,25 +777,61 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <t>
         Use of the same user agent with two different accounts providing
         complementary features introduces the possibility of mismatches
-        between the security profiles of those accounts or features.
-        For example, the SIP aspect and XMPP aspect of the CUSAX service
-        might offer different authentication options (e.g., digest 
-        authentication for SIP as specified in <xref target='RFC3261'/>
-        and SCRAM authentication <xref target='RFC5802'/> for XMPP as
-        specified in <xref target='RFC6120'/>). Similarly, a CUSAX client
-        might successfully negotiate Transport Layer Security (TLS) 
-        <xref target='RFC5246'/> when connecting to the XMPP aspect of
-        the service but not when connecting to the SIP aspect. Such
-        mismatches would introduce the possibility of downgrade attacks.
-        User agent developers and service providers must ensure
-        that such mismatches are avoided as much as possible.
+        between the security profiles of those accounts or features.  Two
+        security mismatches of particular concern are:
       </t>
       <t>
-        <xref target="federation"/>, discusses potential issues that may
+        <list style='symbols'>
+          <t>
+            The SIP aspect and XMPP aspect of a CUSAX service
+            might offer different authentication options (e.g., 
+            digest authentication for SIP as specified in 
+            <xref target='RFC3261'/> and SCRAM authentication 
+            <xref target='RFC5802'/> for XMPP as specified in 
+            <xref target='RFC6120'/>).  Because SIP uses a
+            password-based method (digest) and XMPP uses a 
+            pluggable framework for authentication via the Simple 
+            Authentication and Security Layer (SASL) technology
+            <xref target='RFC4422'/>, it is also possible that
+            the XMPP connection could be authenticated using
+            a password-free method such as client certificates
+            with SASL EXTERNAL even though a username and
+            password is used for the SIP connection.
+          </t>
+          <t>
+            The Transport Layer Security (TLS) <xref target='RFC5246'/> 
+            ciphersuites offered or negotiated on the XMPP side 
+            might be different from those on the SIP side because 
+            of implementation or configuration differences between 
+            the SIP server and the XMPP server.  Even more seriously, 
+            a CUSAX client might successfully negotiate TLS when 
+            connecting to the XMPP aspect of the service but not 
+            when connecting to the SIP aspect, or vice-versa.  In this
+            situation an end user might think that the combined CUSAX
+            session with the service is protected by TLS, even though
+            only one aspect is protected.
+          </t>
+        </list>
+      </t>
+      <t>
+        Security mismatches such as these (as well as others related
+        to end-to-end encryption of messages or media) introduce the 
+        possibility of downgrade attacks, eavesdropping, information
+        leakage, and other security vulnerabilities.  User agent 
+        developers and service providers MUST ensure that such mismatches 
+        are avoided as much as possible (e.g., by enforcing common 
+        and strong security configurations and policies across protocols).  
+        Specifically, if both protocols are not safeguarded by similar 
+        levels of cryptographic protection, the user MUST be informed of 
+        that fact and given the opportunity to bring both up to the same 
+        level.
+      </t>
+      <t>
+        <xref target="federation"/> discusses potential issues that may
         arise due to a mismatch between client capabilities, such as
         calls being initiated with costs contrary to the expectation of
-        the end user. Such issues could be triggered maliciously,
-        as well as by accident. Implementers will therefore need to
+        the end user.  Such issues could be triggered maliciously,
+        as well as by accident.  Implementers therefore need to
         provide necessary cues to raise user awareness as suggested in
         <xref target="federation"/>.
       </t>
@@ -774,7 +857,7 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
           <author initials='E' surname='Ivov' fullname='Emil Ivov'>
             <organization/>
           </author>
-          <date month='May' day='28' year='2013'/>
+          <date month='June' day='18' year='2013'/>
           <abstract>
             <t>
               This document defines and registers a value of
@@ -786,38 +869,13 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
           </abstract>
         </front>
         <seriesInfo name='Internet-Draft'
-                    value='draft-ivov-grouptextchat-purpose-01'/>
+                    value='draft-ivov-grouptextchat-purpose-03'/>
         <format type='TXT'
-                target='http://www.ietf.org/internet-drafts/draft-ivov-grouptextchat-purpose-01.txt'/>
-      </reference>
-      <reference anchor='I-D.saintandre-impp-call-info'>
-        <front>
-          <title>Instant Messaging and Presence Purpose for the
-            Call-Info
-            Header in the Session Initiation Protocol (SIP)
-          </title>
-          <author initials='P' surname='Saint-Andre'
-                  fullname='Peter Saint-Andre'>
-            <organization/>
-          </author>
-          <date month='May' day='30' year='2013'/>
-          <abstract>
-            <t>
-              This document defines and registers a value of "impp"
-              ("instant
-              messaging and presence protocol") for the "purpose" header
-              field
-              parameter of the Call-Info header field in the Session
-              Initiation Protocol (SIP).
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name='Internet-Draft' value='draft-saintandre-impp-call-info-04'/>
-        <format type='TXT'
-                target='http://www.ietf.org/internet-drafts/draft-saintandre-impp-call-info-04.txt'/>
+                target='http://www.ietf.org/internet-drafts/draft-ivov-grouptextchat-purpose-03.txt'/>
       </reference>
       <?rfc include="reference.RFC.3261"?>
       <?rfc include="reference.RFC.4353"?>
+      <?rfc include="reference.RFC.4422"?>
       <?rfc include="reference.RFC.4575"?>
       <?rfc include="reference.RFC.4825"?>
       <?rfc include="reference.RFC.4975"?>
@@ -826,6 +884,7 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <?rfc include="reference.RFC.6120"?>
       <?rfc include="reference.RFC.6121"?>
       <?rfc include="reference.RFC.6350"?>
+      <?rfc include="reference.RFC.6993"?>
       <?rfc include="reference.I-D.ietf-appsawg-webfinger"?>
 
       <reference anchor="XEP-0004">
@@ -1002,9 +1061,10 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         Reitter, and Gonzalo Salgueiro.
       </t>
       <t>
-        Brian Carpenter and Ted Hardie reviewed the document on behalf 
-        of the General Area Review Team and the Applications Area
-        Directorate, respectively.
+        Brian Carpenter, Ted Hardie, Paul Hoffman, and Benson Schliesser 
+        reviewed the document on behalf of the General Area Review 
+        Team, the Applications Area Directorate, the Security Directorate,
+        and the Operations and Management Directorate, respectively.
       </t>
     </section>
   </back>
