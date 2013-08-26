@@ -818,11 +818,11 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         to end-to-end encryption of messages or media) introduce the 
         possibility of downgrade attacks, eavesdropping, information
         leakage, and other security vulnerabilities.  User agent 
-        developers and service providers MUST ensure that such mismatches 
+        developers and service providers must ensure that such mismatches 
         are avoided as much as possible (e.g., by enforcing common 
         and strong security configurations and policies across protocols).  
         Specifically, if both protocols are not safeguarded by similar 
-        levels of cryptographic protection, the user MUST be informed of 
+        levels of cryptographic protection, the user must be informed of 
         that fact and given the opportunity to bring both up to the same 
         level.
       </t>

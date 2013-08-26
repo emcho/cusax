@@ -5,10 +5,10 @@
 Network Working Group                                            E. Ivov
 Internet-Draft                                                     Jitsi
 Intended status: Informational                            P. Saint-Andre
-Expires: February 24, 2014                           Cisco Systems, Inc.
+Expires: February 28, 2014                           Cisco Systems, Inc.
                                                               E. Marocco
                                                           Telecom Italia
-                                                         August 23, 2013
+                                                         August 27, 2013
 
 
   CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 24, 2014.
+   This Internet-Draft will expire on February 28, 2014.
 
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 1]
+Ivov, et al.            Expires February 28, 2014               [Page 1]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 2]
+Ivov, et al.            Expires February 28, 2014               [Page 2]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -165,7 +165,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 3]
+Ivov, et al.            Expires February 28, 2014               [Page 3]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -221,7 +221,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 4]
+Ivov, et al.            Expires February 28, 2014               [Page 4]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -277,7 +277,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 5]
+Ivov, et al.            Expires February 28, 2014               [Page 5]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -333,7 +333,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 6]
+Ivov, et al.            Expires February 28, 2014               [Page 6]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -389,7 +389,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 7]
+Ivov, et al.            Expires February 28, 2014               [Page 7]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -445,7 +445,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 8]
+Ivov, et al.            Expires February 28, 2014               [Page 8]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -501,7 +501,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014               [Page 9]
+Ivov, et al.            Expires February 28, 2014               [Page 9]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -557,7 +557,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 10]
+Ivov, et al.            Expires February 28, 2014              [Page 10]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -613,7 +613,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 11]
+Ivov, et al.            Expires February 28, 2014              [Page 11]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -669,7 +669,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 12]
+Ivov, et al.            Expires February 28, 2014              [Page 12]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -725,7 +725,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 13]
+Ivov, et al.            Expires February 28, 2014              [Page 13]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -781,7 +781,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 14]
+Ivov, et al.            Expires February 28, 2014              [Page 14]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -809,11 +809,11 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
    to-end encryption of messages or media) introduce the possibility of
    downgrade attacks, eavesdropping, information leakage, and other
    security vulnerabilities.  User agent developers and service
-   providers MUST ensure that such mismatches are avoided as much as
+   providers must ensure that such mismatches are avoided as much as
    possible (e.g., by enforcing common and strong security
    configurations and policies across protocols).  Specifically, if both
    protocols are not safeguarded by similar levels of cryptographic
-   protection, the user MUST be informed of that fact and given the
+   protection, the user must be informed of that fact and given the
    opportunity to bring both up to the same level.
 
    Section 5 discusses potential issues that may arise due to a mismatch
@@ -837,7 +837,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 15]
+Ivov, et al.            Expires February 28, 2014              [Page 15]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -893,7 +893,7 @@ Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 16]
+Ivov, et al.            Expires February 28, 2014              [Page 16]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -949,7 +949,7 @@ Appendix A.  Acknowledgements
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 17]
+Ivov, et al.            Expires February 28, 2014              [Page 17]
 
 Internet-Draft        Combined Use of SIP and XMPP           August 2013
 
@@ -1005,4 +1005,4 @@ Authors' Addresses
 
 
 
-Ivov, et al.            Expires February 24, 2014              [Page 18]
+Ivov, et al.            Expires February 28, 2014              [Page 18]
