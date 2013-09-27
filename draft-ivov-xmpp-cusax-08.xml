@@ -381,9 +381,8 @@ signaling  \         /   presence, etc.
         </t>
         <t>
           To ensure that the foregoing approach is always respected,
-          service providers might consider (1) preventing clients (and
-          hence users) from modifying the vCard "tel" fields or (2)
-          applying some form of validation before storing changes. Of
+          service providers might consider validating the values of
+          vCard "tel" fields before storing changes. Of
           course such validation would be feasible mostly in cases where
           a single provider controls both the XMPP and the SIP service
           since such providers would "know" (e.g., based on use of a
@@ -531,28 +530,28 @@ signaling  \         /   presence, etc.
           If, on the other hand, no relationship has been configured or
           discovered between a SIP account and an XMPP account, and the
           client is aware of multiple telephony-capable accounts, it
-          ought to present the user with the choice of reaching the
-          contact through any of those accounts. This includes the
-          source XMPP account where the vCard was obtained (in case its
-          telephony capabilities are not disabled through configuration
-          or provisioning), in order to guarantee proper operation for
-          XMPP accounts that are not part of a CUSAX deployment.
+          ought to present the user with the option of using XMPP Jingle
+          as one method for engaging in audio and video interactions with
+          a contact who has an XMPP address.  This can help to ensure
+          complete audio and video calls with XMPP users who are not part 
+          of a CUSAX deployment.
         </t>
       </section>
       <section title='Matching Incoming SIP Calls to XMPP JIDs'>
         <t>
-          When receiving SIP calls, clients may wish to determine the
+          When receiving a SIP call, a CUSAX clients may wish to determine the
           identity of the caller and a corresponding XMPP roster entry so
-          that users could revert to chatting or other forms of
-          communication that require XMPP. To do so clients could search
-          their roster for an entry whose vCard has a "tel" field
+          that the receiving user could revert to chatting or other forms of
+          communication that require XMPP. To do so, a CUSAX client could search
+          the user's roster for an entry whose vCard has a "tel" field
           matching the originator of the call.  In addition, in order to 
-          avoid the effort of iterating over an
-          entire roster and retrieving all vCards, CUSAX clients may use
-          a SIP Call-Info header whose 'purpose' header field parameter
-          has a value of "impp" as described in
-          <xref target='RFC6993'/>. An example
-          follows.
+          avoid the effort of iterating over the entire roster of the user and 
+          retrieving vCards for all of the user's contacts, the receiving client 
+          may guess at the identity of the caller based a SIP Call-Info header 
+          whose 'purpose' header field parameter has a value of "impp" as 
+          described in <xref target='RFC6993'/>. To enable this usage, a sending
+          client would need to include such a Call-Info header in the SIP 
+          messages that it sends when initiating a call.  An example follows.
           <figure>
             <artwork><![CDATA[
 Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
@@ -560,7 +559,8 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
           </figure>
           Note that the information from the Call-Info header should
           only be used as a cue: the actual AOR-to-JID binding would
-          still need to be confirmed by a vCard entry or through some
+          still need to be confirmed by the vCard of a contact in the 
+          receiving user's roster or through some
           other trusted means (such as an enterprise directory). If this
           confirmation succeeds the client would not need to search the
           entire roster and retrieve all vCards. Not performing the
@@ -598,7 +598,11 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         the "muc#roominfo" data form <xref target='XEP-0004'/> to include 
         extended information <xref target='XEP-0128'/> about the MUC room 
         within XMPP service discovery <xref target='XEP-0030'/>; see
-        <xref target='XEP-0045'/> for an example.
+        <xref target='XEP-0045'/> for an example.  These methods would 
+        enable a CUSAX-aware SIP conference server to advertise the 
+        existence of an associated XMPP chatroom, and for a CUSAX-aware
+        XMPP chatroom to advertise the existence of an associated SIP
+        conference server.
       </t>
       <t>
         Once a CUSAX client joins the MUC associated with a particular
@@ -616,10 +620,11 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
         messages, audio/video, or both.
       </t>
       <t>
-        Of course, tighter integration between the XMPP MUC and the SIP
-        conference is also possible. Permissions, roles, kicks and bans
+        At the level of the CUSAX service, it is also possible to enforce
+        tighter integration between the XMPP MUC and the SIP conference. 
+        Permissions, roles, kicks and bans
         that are granted and performed in the MUC can easily be imitated
-        by the conference focus/mixer into the SIP call. If for example,
+        by the conference focus/mixer into the SIP call. If, for example,
         a certain MUC member is muted, the conference mixer can choose
         to also apply the mute on the media stream corresponding to that
         participant. The details and  exact level of such integration is
@@ -677,8 +682,10 @@ Call-Info: <xmpp:alice@xmpp.example.com> ;purpose=impp
       <t>
         In order to avoid such issues, providers maintaining a CUSAX
         service for the users in their domain may choose to provide
-        additional cues (e.g., a user interface warning or an an audio
-        tone or message) indicating that a call would incur charges.
+        additional cues (e.g., a service-generated signal that 
+        triggers a user interface warning in a CUSAX client, an 
+        auditory tone, or a spoken message) indicating that a call 
+        would incur charges.
       </t>
       <t>
         A slightly less disturbing scenario, where a SIP service might
