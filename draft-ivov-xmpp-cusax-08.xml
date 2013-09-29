@@ -289,32 +289,8 @@ signaling  \         /   presence, etc.
       <t>
         Once clients have been provisioned, they need to independently
         log into the SIP and XMPP accounts that make up the CUSAX
-        "service" and then maintain both these connections as displayed
-        in <xref target="figure-sample-deployment"/>.
+        "service" and then maintain both these connections.
       </t>
-      <figure anchor='figure-sample-deployment'
-              title='Example Deployment'>
-        <artwork><![CDATA[
-+--------------+
-| Provisioning |-----------+
-|    Server    |           |
-+--------------+           v
-   |              +----------------+
-   |              | User Directory |
-   |              +----------------+
-   |                /            \
-   |      +------------+      +-------------+
-   |      | SIP Server |      | XMPP Server |
-   |      +------------+      +-------------+
-   |               \             /
-   |      media     \           /  instant messaging,
-   |      signaling  \         /   presence, etc.
-   |                  \       /
-   |               +--------------+
-   +---------------| CUSAX Client |
-                   +--------------+
-        ]]></artwork>
-      </figure>
       <t>
         In order to improve the user experience, when reporting
         connection status clients may also wish to present the XMPP
@@ -387,8 +363,7 @@ signaling  \         /   presence, etc.
           a single provider controls both the XMPP and the SIP service
           since such providers would "know" (e.g., based on use of a
           common user database for both services) what SIP AOR
-          corresponds to a given XMPP user (as indicated in
-          <xref target="figure-sample-deployment"/>).
+          corresponds to a given XMPP user.
         </t>
       </section>
       <section title='Service Management'>
@@ -539,7 +514,7 @@ signaling  \         /   presence, etc.
       </section>
       <section title='Matching Incoming SIP Calls to XMPP JIDs'>
         <t>
-          When receiving a SIP call, a CUSAX clients may wish to determine the
+          When receiving a SIP call, a CUSAX client may wish to determine the
           identity of the caller and a corresponding XMPP roster entry so
           that the receiving user could revert to chatting or other forms of
           communication that require XMPP. To do so, a CUSAX client could search
